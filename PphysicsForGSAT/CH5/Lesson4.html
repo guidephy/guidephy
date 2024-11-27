@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CH5能量</title>
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        h1 {
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        ul, ol {
+            margin-left: 20px;
+        }
+        .highlight {
+            background-color: #e8f5e9;
+            padding: 10px;
+            border-left: 4px solid #4CAF50;
+            margin: 10px 0;
+        }
+        .question {
+            background-color: #fff3cd;
+            padding: 10px;
+            border-left: 4px solid #ffc107;
+            margin: 10px 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        textarea {
+            width: 100%;
+            height: 50px;
+            margin: 10px 0;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            resize: vertical;
+            padding: 5px;
+        }
+        #feedback {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+        code {
+            background-color: #e8f5e9;
+            padding: 2px 4px;
+            font-size: 90%;
+        }
+        .strategy {
+            display: none;
+            background-color: #e0f7fa;
+            padding: 10px;
+            border-left: 4px solid #00acc1;
+            margin-top: 10px;
+        }
+
+        .navigation-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* 調整按鈕間距 */
+    margin-top: 20px;
+    padding: 10px 0;
+    background-color: #f0f0f0;
+    border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 15px; /* 縮小按鈕尺寸 */
+    background: linear-gradient(45deg, #4caf50, #81c784);
+    color: white;
+    text-decoration: none;
+    border-radius: 20px; /* 減小圓角 */
+    font-weight: bold;
+    font-size: 14px; /* 縮小字體 */
+    transition: transform 0.3s, background-color 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 調整陰影大小 */
+}
+
+.nav-btn span {
+    font-size: 16px; /* 縮小圖標尺寸 */
+    margin-right: 5px; /* 縮小圖標和文字間距 */
+}
+
+.nav-btn:hover {
+    background-color: #45a049;
+    transform: scale(1.05); /* 輕微放大效果 */
+}
+    </style></head>
+<body>
+    <div class="container">
+        <h1>5-3 核能與輻射安全</h1>
+
+        <!-- 4.1 質能互換 -->
+        <h2>5.4.1 質能互換</h2>
+        <h3>愛因斯坦的質能互換公式</h3>
+        <div class="highlight">
+            <p><strong>公式：</strong> E = m × c²</p>
+            <ul>
+                <li>E：能量（焦耳，J）</li>
+                <li>m：質量（公斤，kg）</li>
+                <li>c：光速（約為 3 × 10⁸ m/s）</li>
+            </ul>
+        </div>
+        <p>這個公式表示質量和能量可以互相轉換，質量是一種能量的形式。在核反應中，微小的質量損失可以轉換成巨大的能量。</p>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 1：</strong>  
+            如果一個物體的質量減少了 0.001 kg，根據 E = mc²，釋放出的能量是多少焦耳？（取 c = 3 × 10⁸ m/s）  
+            <textarea id="q1"></textarea>
+            <button class="btn" onclick="checkQ1()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s1')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f1', '9 × 10¹³ J')">顯示答案</button>
+            <div id="s1" class="strategy">
+                <strong>解題策略：</strong>
+                將 m = 0.001 kg 和 c = 3 × 10⁸ m/s 代入公式 E = mc²，進行計算。
+            </div>
+            <p id="f1"></p>
+        </div>
+
+        <div class="question">
+            <strong>問題 2：</strong>  
+            說明質能互換在核反應中的重要性。  
+            <textarea id="q2"></textarea>
+            <button class="btn" onclick="checkQ2()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s2')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f2', '因為在核反應中，質量損失會轉換成巨大的能量，這是核能的來源')">顯示答案</button>
+            <div id="s2" class="strategy">
+                <strong>解題策略：</strong>
+                回想核反應如何利用質量和能量的轉換來釋放能量。
+            </div>
+            <p id="f2"></p>
+        </div>
+
+        <div class="question">
+            <strong>問題 3：</strong>  
+            為什麼微小的質量損失能產生巨大的能量？  
+            <textarea id="q3"></textarea>
+            <button class="btn" onclick="checkQ3()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s3')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f3', '因為光速 c 的數值非常大，c² 更是巨大，質量乘以 c² 會得到很大的能量')">顯示答案</button>
+            <div id="s3" class="strategy">
+                <strong>解題策略：</strong>
+                思考公式 E = mc² 中，c² 的數值對能量計算的影響。
+            </div>
+            <p id="f3"></p>
+        </div>
+
+        <!-- 4.2 核分裂 -->
+        <h2>5.4.2 核分裂</h2>
+        <h3>定義</h3>
+        <p>核分裂是指一個重原子核（例如鈾-235）在吸收一個中子後，分裂成兩個或多個較輕的原子核，同時釋放出 2~3 個中子和巨大的能量。</p>
+
+        <h3>核分裂反應方程式</h3>
+        <div class="equation">
+            <p>示例反應式：</p>
+            <p>
+                <em>n + <sup>235</sup>U → <sup>236</sup>U → <sup>92</sup>Kr + <sup>141</sup>Ba + 3<em>n + 能量</p>
+        </div>
+        <p>在上述反應中：</p>
+        <ul>
+            <li><sup>235</sup>U 表示鈾-235，同位素質量數為 235。</li>
+            <li><em>n 表示中子。</li>
+            <li>反應產生了 <sup>92</sup>Kr（氪-92）、<sup>141</sup>Ba（鋇-141）和 3 個中子。</li>
+        </ul>
+
+        <h3>質量數和原子序守恆</h3>
+        <p>在核反應中，反應前後的質量數（上標）和原子序（下標）總和是守恆的。</p>
+        <p>以上述反應為例：</p>
+        <ul>
+            <li>質量數守恆：1 + 235 = 236 → 92 + 141 + 3 × 1 = 236</li>
+            <li>原子序守恆：0 + 92 = 92 → 36 + 56 + 3 × 0 = 92</li>
+        </ul>
+
+        <h3>連鎖反應</h3>
+        <p>釋放出的中子可以繼續撞擊其他鈾-235 原子核，引發更多的核分裂，形成連鎖反應。如果不加以控制，連鎖反應會越來越劇烈。</p>
+
+        <h3>應用與缺點</h3>
+        <ul>
+            <li><strong>應用：</strong>核能發電、核武器。</li>
+            <li><strong>缺點：</strong>產生具有放射性的核廢料，需要長期妥善處理。</li>
+        </ul>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 4：</strong>  
+            在核分裂反應中，質量數和原子序如何守恆？請舉例說明。  
+            <textarea id="q4"></textarea>
+            <button class="btn" onclick="checkQ4()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s4')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f4', '反應前後質量數和原子序的總和相等，例如在鈾-235 的分裂中，質量數：1+235=236，等於產物質量數之和')">顯示答案</button>
+            <div id="s4" class="strategy">
+                <strong>解題策略：</strong>
+                參考核分裂反應方程式，計算反應物和生成物的質量數和原子序。
+            </div>
+            <p id="f4"></p>
+        </div>
+
+        <div class="question">
+            <strong>問題 5：</strong>  
+            核分裂釋放出多少個中子？這些中子有何作用？  
+            <textarea id="q5"></textarea>
+            <button class="btn" onclick="checkQ5()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s5')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f5', '釋放 2~3 個中子，可引發更多核分裂，形成連鎖反應')">顯示答案</button>
+            <div id="s5" class="strategy">
+                <strong>解題策略：</strong>
+                回想核分裂反應中中子的數量和它們在連鎖反應中的角色。
+            </div>
+            <p id="f5"></p>
+        </div>
+
+        <div class="question">
+            <strong>問題 6：</strong>  
+            請配平以下核反應方程式，使其質量數和原子序守恆：  
+            <div class="equation">
+                <p><em>n + <sup>235</sup>U → <sup>94</sup>Sr + _____ + 2<em>n</p>
+            </div>
+            <textarea id="q6"></textarea>
+            <button class="btn" onclick="checkQ6()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s6')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f6', '<sup>140</sup>Xe')">顯示答案</button>
+            <div id="s6" class="strategy">
+                <strong>解題策略：</strong>
+                計算缺少的質量數和原子序，找到相應的元素。
+            </div>
+            <p id="f6"></p>
+        </div>
+
+        <!-- 4.3 核融合 -->
+        <h2>5.4.3 核融合</h2>
+        <h3>定義</h3>
+        <p>核融合是指兩個或多個輕原子核（如氫的同位素）在極高溫高壓下結合成一個較重的原子核，並釋放出巨大的能量。</p>
+
+        <h3>太陽的能量來源</h3>
+        <p>太陽的能量主要來自核融合反應，氫原子核融合成氦原子核，釋放出光和熱。</p>
+
+        <h3>優點與挑戰</h3>
+        <ul>
+            <li><strong>優點：</strong>燃料豐富（氫可從海水中獲取）、產生的放射性廢料少、安全性高。</li>
+            <li><strong>挑戰：</strong>需要極高的溫度和壓力，目前技術尚未成熟，難以大規模應用於發電。</li>
+        </ul>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 7：</strong>  
+            為什麼核融合被認為是未來理想的能源？  
+            <textarea id="q7"></textarea>
+            <button class="btn" onclick="checkQ7()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s7')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f7', '因為核融合燃料豐富、環境友好、安全性高，能提供清潔的能源')">顯示答案</button>
+            <div id="s7" class="strategy">
+                <strong>解題策略：</strong>
+                思考核融合的優點對能源需求和環境的影響。
+            </div>
+            <p id="f7"></p>
+        </div>
+
+        <div class="question">
+            <strong>問題 8：</strong>  
+            核融合反應需要什麼條件才能發生？  
+            <textarea id="q8"></textarea>
+            <button class="btn" onclick="checkQ8()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s8')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f8', '極高的溫度和壓力，使原子核克服電磁排斥力進行融合')">顯示答案</button>
+            <div id="s8" class="strategy">
+                <strong>解題策略：</strong>
+                考慮原子核之間的作用力和需要克服的障礙。
+            </div>
+            <p id="f8"></p>
+        </div>
+
+        <div class="question">
+            <strong>問題 9：</strong>  
+            太陽能量的來源是核融合還是核分裂？請解釋。  
+            <textarea id="q9"></textarea>
+            <button class="btn" onclick="checkQ9()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s9')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f9', '核融合，因為太陽內部氫原子核融合成氦原子核，釋放能量')">顯示答案</button>
+            <div id="s9" class="strategy">
+                <strong>解題策略：</strong>
+                回想太陽內部的核反應類型和過程。
+            </div>
+            <p id="f9"></p>
+        </div>
+
+        <!-- 4.4 輻射 -->
+        <h2>5.4.4 輻射</h2>
+        <h3>核反應產物與輻射線種類</h3>
+        <p>核反應會產生具有放射性的物質，這些物質釋放出輻射線，包括：</p>
+        <ul>
+            <li><strong>α 射線</strong>：氦原子核，帶正電，穿透力最弱。</li>
+            <li><strong>β 射線</strong>：高速電子，帶負電，穿透力中等。</li>
+            <li><strong>γ 射線</strong>：高能電磁波，無電荷，穿透力最強。</li>
+            <li><strong>中子輻射</strong>：中子流，無電荷，穿透力極強。</li>
+        </ul>
+
+        <h3>穿透力與屏蔽</h3>
+        <ul>
+            <li>α 射線：可被紙張或皮膚阻擋。</li>
+            <li>β 射線：需要金屬板（如鋁板）進行屏蔽。</li>
+            <li>γ 射線：需要厚重的鉛板或混凝土屏蔽。</li>
+            <li>中子輻射：需要富含氫的材料（如水、混凝土）屏蔽。</li>
+        </ul>
+
+        <h3>輻射對生物的影響</h3>
+        <p>輻射線會破壞生物體內的細胞和 DNA，導致輻射疾病，嚴重時可致癌或致命。因此，防護輻射非常重要。</p>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 10：</strong>  
+            哪種輻射線的穿透力最強，如何有效屏蔽？  
+            <textarea id="q10"></textarea>
+            <button class="btn" onclick="checkQ10()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s10')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f10', 'γ 射線，需用厚鉛板或混凝土屏蔽')">顯示答案</button>
+            <div id="s10" class="strategy">
+                <strong>解題策略：</strong>
+                比較各種輻射線的穿透力和屏蔽方法。
+            </div>
+            <p id="f10"></p>
+        </div>
+
+        <div class="question">
+            <strong>問題 11：</strong>  
+            為什麼中子輻射需要使用富含氫的物質來屏蔽？  
+            <textarea id="q11"></textarea>
+            <button class="btn" onclick="checkQ11()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s11')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f11', '因為氫原子核（質子）可以有效減速和吸收中子，減少輻射危害')">顯示答案</button>
+            <div id="s11" class="strategy">
+                <strong>解題策略：</strong>
+                考慮中子與輕原子核之間的交互作用。
+            </div>
+            <p id="f11"></p>
+        </div>
+
+        <div class="question">
+            <strong>問題 12：</strong>  
+            輻射對生物體有何危害？  
+            <textarea id="q12"></textarea>
+            <button class="btn" onclick="checkQ12()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s12')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f12', '破壞細胞和 DNA，導致輻射疾病、癌症，甚至死亡')">顯示答案</button>
+            <div id="s12" class="strategy">
+                <strong>解題策略：</strong>
+                思考輻射對生物組織和遺傳物質的影響。
+            </div>
+            <p id="f12"></p>
+        </div>
+
+        <!-- 4.5 核能發電安全 -->
+        <h2>5.4.5 核能發電安全</h2>
+        <h3>核電廠的結構與功能</h3>
+        <ul>
+            <li><strong>反應爐：</strong>進行核分裂反應，產生熱能。</li>
+            <li><strong>發電機組：</strong>利用熱能產生蒸汽，推動渦輪機發電。</li>
+            <li><strong>冷卻系統：</strong>帶走反應爐的熱量，防止過熱。</li>
+        </ul>
+
+        <h3>使用低濃度鈾-235確保安全</h3>
+        <p>核電廠中使用低濃度（約 3%）的鈾-235 作為燃料，這樣可以防止核反應過於劇烈，確保反應可控，增強安全性。</p>
+
+        <h3>安全裝置</h3>
+        <ul>
+            <li><strong>控制棒：</strong>吸收中子，控制核反應速率。</li>
+            <li><strong>安全殼：</strong>防止輻射物質外洩的結構。</li>
+            <li><strong>應急系統：</strong>在緊急情況下自動停堆和冷卻。</li>
+        </ul>
+
+        <h3>安全問題與對策</h3>
+        <ul>
+            <li>核電廠事故可能導致輻射外洩，需嚴格管理和監控。</li>
+            <li>核廢料需要長期安全的處理和儲存方式。</li>
+            <li>加強設備維護、人員培訓和緊急應變措施，確保核電廠安全運行。</li>
+        </ul>
+
+        <h3>福島核災的教訓</h3>
+        <p>2011 年日本福島核電廠因地震和海嘯導致冷卻系統失效，造成爐心熔毀和輻射外洩，提醒我們核能發電的安全性至關重要。</p>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 13：</strong>  
+            為什麼使用低濃度的鈾-235 燃料可以提高核電廠的安全性？  
+            <textarea id="q13"></textarea>
+            <button class="btn" onclick="checkQ13()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s13')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f13', '低濃度鈾-235 減少了核反應的劇烈程度，使反應更易控制，防止失控')">顯示答案</button>
+            <div id="s13" class="strategy">
+                <strong>解題策略：</strong>
+                考慮燃料濃度對核反應速率和可控性的影響。
+            </div>
+            <p id="f13"></p>
+        </div>
+
+        <div class="question">
+            <strong>問題 14：</strong>  
+            福島核電廠事故的主要原因是什麼？  
+            <textarea id="q14"></textarea>
+            <button class="btn" onclick="checkQ14()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s14')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f14', '地震和海嘯導致冷卻系統失效，爐心熔毀和輻射外洩')">顯示答案</button>
+            <div id="s14" class="strategy">
+                <strong>解題策略：</strong>
+                回顧福島核災的事件經過和關鍵問題。
+            </div>
+            <p id="f14"></p>
+        </div>
+
+        <div class="question">
+            <strong>問題 15：</strong>  
+            為了確保核電廠的安全運作，需要採取哪些措施？  
+            <textarea id="q15"></textarea>
+            <button class="btn" onclick="checkQ15()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s15')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f15', '加強設備維護、人員培訓、完善緊急應變措施和核廢料管理')">顯示答案</button>
+            <div id="s15" class="strategy">
+                <strong>解題策略：</strong>
+                考慮核電廠運營中的各個環節及可能的風險控制。
+            </div>
+            <p id="f15"></p>
+        </div>
+
+        <div class="navigation-buttons">
+    
+    <a href="Lesson3.html" class="nav-btn">
+        <span>&uarr;</span> 上一單元:5-3 熱能與微觀尺度的能量轉換
+    </a>
+</div>   
+    </div>
+
+    <script>
+        // 通用函數
+        function toggleStrategy(id) {
+            const element = document.getElementById(id);
+            if (element.style.display === "none" || element.style.display === "") {
+                element.style.display = "block";
+            } else {
+                element.style.display = "none";
+            }
+        }
+
+        function toggleAnswer(id, correctAnswer) {
+            const element = document.getElementById(id);
+            if (element.style.display === "none" || element.style.display === "") {
+                element.textContent = "正確答案是：" + correctAnswer + "。";
+                element.className = "";
+                element.style.display = "block";
+            } else {
+                element.style.display = "none";
+            }
+        }
+
+        // 以下是問題的檢查函數
+        // 問題 1
+        function checkQ1() {
+            const answer = document.getElementById("q1").value.trim();
+            const correctAnswer = (0.001 * Math.pow(3e8, 2)).toExponential(1);
+            const feedback = document.getElementById("f1");
+            if (answer.includes("9e13") || answer.includes("9 × 10^13") || answer.includes("9 × 10¹³") || answer.includes("9e+13")) {
+                feedback.textContent = "正確！釋放的能量為 9 × 10¹³ J。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不正確，請再計算一次。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 2
+        function checkQ2() {
+            const answer = document.getElementById("q2").value.trim();
+            const feedback = document.getElementById("f2");
+            if (answer.includes("質量") && answer.includes("能量") && (answer.includes("轉換") || answer.includes("轉化"))) {
+                feedback.textContent = "正確！質量轉換為能量是核能的來源。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請說明質量和能量的轉換在核反應中的作用。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 3
+        function checkQ3() {
+            const answer = document.getElementById("q3").value.trim();
+            const feedback = document.getElementById("f3");
+            if (answer.includes("光速") || answer.includes("c²") || answer.includes("巨大")) {
+                feedback.textContent = "正確！因為 c² 非常大，質量乘以 c² 得到巨大的能量。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請提及光速平方對能量的影響。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 4
+        function checkQ4() {
+            const answer = document.getElementById("q4").value.trim();
+            const feedback = document.getElementById("f4");
+            if (answer.includes("質量數") && answer.includes("原子序") && answer.includes("守恆")) {
+                feedback.textContent = "正確！在核反應中，質量數和原子序是守恆的。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請舉例說明質量數和原子序的守恆。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 5
+        function checkQ5() {
+            const answer = document.getElementById("q5").value.trim();
+            const feedback = document.getElementById("f5");
+            if ((answer.includes("2") || answer.includes("3")) && answer.includes("中子") && answer.includes("連鎖反應")) {
+                feedback.textContent = "正確！釋放 2~3 個中子，引發連鎖反應。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請說明中子的數量和作用。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 6
+        function checkQ6() {
+            const answer = document.getElementById("q6").value.trim();
+            const feedback = document.getElementById("f6");
+            if (answer.includes("140") && (answer.includes("Xe") || answer.includes("氙"))) {
+                feedback.textContent = "正確！缺少的核種是氙-140（Xe）。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不正確，請再計算一次缺少的核種。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 7
+        function checkQ7() {
+            const answer = document.getElementById("q7").value.trim();
+            const feedback = document.getElementById("f7");
+            if ((answer.includes("燃料豐富") || answer.includes("氫")) && (answer.includes("環境友好") || answer.includes("安全"))) {
+                feedback.textContent = "正確！核融合具有燃料豐富、安全、環境友好的優點。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請提及核融合的優點。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 8
+        function checkQ8() {
+            const answer = document.getElementById("q8").value.trim();
+            const feedback = document.getElementById("f8");
+            if (answer.includes("高溫") && answer.includes("高壓") && (answer.includes("克服") || answer.includes("電磁排斥"))) {
+                feedback.textContent = "正確！需要高溫高壓來克服原子核之間的排斥力。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請說明需要的條件和原因。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 9
+        function checkQ9() {
+            const answer = document.getElementById("q9").value.trim();
+            const feedback = document.getElementById("f9");
+            if (answer.includes("核融合") && answer.includes("氫") && answer.includes("氦")) {
+                feedback.textContent = "正確！太陽的能量來源是核融合，氫融合成氦。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請解釋太陽的核反應過程。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 10
+        function checkQ10() {
+            const answer = document.getElementById("q10").value.trim();
+            const feedback = document.getElementById("f10");
+            if (answer.includes("γ") && (answer.includes("鉛") || answer.includes("混凝土"))) {
+                feedback.textContent = "正確！γ 射線穿透力最強，需要鉛或混凝土屏蔽。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請指出輻射線種類和屏蔽方法。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 11
+        function checkQ11() {
+            const answer = document.getElementById("q11").value.trim();
+            const feedback = document.getElementById("f11");
+            if (answer.includes("氫") && (answer.includes("吸收中子") || answer.includes("減速中子"))) {
+                feedback.textContent = "正確！氫原子核有效吸收和減速中子。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請說明氫與中子的交互作用。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 12
+        function checkQ12() {
+            const answer = document.getElementById("q12").value.trim();
+            const feedback = document.getElementById("f12");
+            if (answer.includes("細胞") && (answer.includes("DNA") || answer.includes("癌症"))) {
+                feedback.textContent = "正確！輻射會破壞細胞和 DNA，導致健康問題。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請說明輻射對生物的具體危害。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 13
+        function checkQ13() {
+            const answer = document.getElementById("q13").value.trim();
+            const feedback = document.getElementById("f13");
+            if ((answer.includes("低濃度") || answer.includes("3%")) && (answer.includes("控制") || answer.includes("安全"))) {
+                feedback.textContent = "正確！低濃度鈾-235 有助於控制核反應，提高安全性。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請說明低濃度燃料對安全的影響。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 14
+        function checkQ14() {
+            const answer = document.getElementById("q14").value.trim();
+            const feedback = document.getElementById("f14");
+            if ((answer.includes("地震") && answer.includes("海嘯")) && (answer.includes("冷卻系統失效") || answer.includes("爐心熔毀"))) {
+                feedback.textContent = "正確！因地震和海嘯導致冷卻系統失效。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請說明事故的主要原因。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 15
+        function checkQ15() {
+            const answer = document.getElementById("q15").value.trim();
+            const feedback = document.getElementById("f15");
+            if ((answer.includes("設備維護") || answer.includes("人員培訓")) && (answer.includes("應變措施") || answer.includes("核廢料管理"))) {
+                feedback.textContent = "正確！需要加強維護、培訓和應變措施等。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請列舉必要的安全措施。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+    </script>
+</body>
+</html>
+
