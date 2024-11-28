@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CH3 物質的組成與交互作用</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        h1 {
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        ul, ol {
+            margin-left: 20px;
+        }
+        .highlight {
+            background-color: #e8f5e9;
+            padding: 10px;
+            border-left: 4px solid #4CAF50;
+            margin: 10px 0;
+        }
+        .question {
+            background-color: #fff3cd;
+            padding: 10px;
+            border-left: 4px solid #ffc107;
+            margin: 10px 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        textarea {
+            width: 100%;
+            height: 50px;
+            margin: 10px 0;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            resize: vertical;
+            padding: 5px;
+        }
+        #feedback {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+        code {
+            background-color: #e8f5e9;
+            padding: 2px 4px;
+            font-size: 90%;
+        }
+        .strategy {
+            display: none;
+            background-color: #e0f7fa;
+            padding: 10px;
+            border-left: 4px solid #00acc1;
+            margin-top: 10px;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            padding: 10px 0;
+            background-color: #f0f0f0;
+            border-top: 1px solid #ddd;
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 15px;
+            background: linear-gradient(45deg, #4caf50, #81c784);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: transform 0.3s, background-color 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-btn span {
+            font-size: 16px;
+            margin-right: 5px;
+        }
+
+        .nav-btn:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>3-1 物質的組成</h1>
+
+        <!-- 3.1.1 原子的組成與排列 -->
+        <h2>3.1.1 原子的組成與排列</h2>
+        <p>所有的物質都是由<strong>原子</strong>組成的。原子是物質的基本單位，由原子核和電子構成。</p>
+        <p>不同的原子種類（元素）和它們的排列方式決定了物質的性質。例如：</p>
+        <ul>
+            <li><strong>鑽石</strong>和<strong>石墨</strong>都是由碳原子組成，但因為原子排列方式不同，鑽石堅硬透明，而石墨柔軟導電。</li>
+            <li><strong>鹽（氯化鈉）</strong>由鈉和氯兩種原子組成，形成離子晶格結構，具有高熔點和易溶於水的特性。</li>
+        </ul>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 1：</strong>
+            為什麼鑽石和石墨的性質差異這麼大，儘管它們都是由碳原子組成的？
+            <textarea id="q1"></textarea>
+            <button class="btn" onclick="checkQ1()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s1')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f1', '因為碳原子的排列方式不同，導致物理性質的差異')">顯示答案</button>
+            <div id="s1" class="strategy">
+                <strong>解題策略：</strong>
+                思考原子排列對物質性質的影響，尤其是在同種元素組成的物質中。
+            </div>
+            <p id="f1"></p>
+        </div>
+
+        <!-- 3.1.2 原子的大小 -->
+        <h2>3.1.2 原子的大小</h2>
+        <p>原子的尺寸非常小，通常使用以下單位來表示：</p>
+        <ul>
+            <li><strong>埃（Å）：</strong>1 Å = 1 × 10<sup>-10</sup> 公尺，約為原子的大小。</li>
+            <li><strong>奈米（nm）：</strong>1 nm = 1 × 10<sup>-9</sup> 公尺，1 nm = 10 Å。</li>
+            <li><strong>飛米（fm）：</strong>1 fm = 1 × 10<sup>-15</sup> 公尺，約為原子核的大小。</li>
+        </ul>
+
+        <p>例如，氫原子的半徑約為 0.5 Å，而原子核的半徑僅約為 1 fm，可見電子雲佔據了大部分的空間。</p>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 2：</strong>
+            1 奈米等於多少埃（Å）？原子核的大小約為多少飛米（fm）？
+            <textarea id="q2"></textarea>
+            <button class="btn" onclick="checkQ2()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s2')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f2', '1 奈米等於 10 埃；原子核大小約為 1 飛米')">顯示答案</button>
+            <div id="s2" class="strategy">
+                <strong>解題策略：</strong>
+                回憶單位換算，並記住原子和原子核的典型尺寸。
+            </div>
+            <p id="f2"></p>
+        </div>
+
+        <!-- 3.1.3 物質三態的原子觀點 -->
+        <h2>3.1.3 物質三態的原子觀點</h2>
+        <p>物質的三態（固態、液態、氣態）可以從原子或分子的排列方式來理解：</p>
+
+        <h3>固態</h3>
+        <p>原子或分子緊密排列，具有固定的形狀和體積。</p>
+
+        <h3>液態</h3>
+        <p>原子或分子排列較鬆散，能夠流動，具有固定體積但無固定形狀。</p>
+
+        <h3>氣態</h3>
+        <p>原子或分子間距較大，無固定形狀和體積，可壓縮性高。</p>
+
+        <h3>三相圖（P-T 圖）</h3>
+        <p>三相圖展示了物質在不同溫度和壓力下的狀態變化：</p>
+        <ul>
+            <li><strong>壓力增加</strong>通常會提高物質的凝固點和沸點。</li>
+            <li><strong>例外情況：</strong>對於水、銻、鉍、生鐵等，壓力增加會降低凝固點。</li>
+            <li><strong>三相點：</strong>固、液、氣三相共存的特定溫度和壓力點。</li>
+        </ul>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 3：</strong>
+            壓力增加時，水的凝固點會如何變化？為什麼？
+            <textarea id="q3"></textarea>
+            <button class="btn" onclick="checkQ3()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s3')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f3', '水的凝固點會降低，因為冰的體積比水大，壓力增加有利於液態')">顯示答案</button>
+            <div id="s3" class="strategy">
+                <strong>解題策略：</strong>
+                考慮水在固態和液態時的體積差異，以及壓力對體積的影響。
+            </div>
+            <p id="f3"></p>
+        </div>
+
+        <!-- 3.1.4 以原子觀點解釋巨觀現象 -->
+        <h2>3.1.4 以原子觀點解釋巨觀現象</h2>
+        <p>許多宏觀現象可以從原子或分子的行為來理解：</p>
+
+        <h3>聲波</h3>
+        <p>聲音是由物體振動引起的空氣分子疏密波動，這種波動以聲波的形式傳播。</p>
+
+        <h3>熱</h3>
+        <p>熱是原子或分子的隨機運動能量，加熱使粒子運動加劇，表現為溫度上升。</p>
+
+        <h3>電流</h3>
+        <p>電流是導體中自由電子在電場作用下的定向移動。</p>
+
+        <h3>光</h3>
+        <p>光是電子在原子能階之間躍遷時，吸收或放出光子所產生的。</p>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 4：</strong>
+            以原子觀點解釋，為什麼溫度升高時，物體的體積通常會膨脹？
+            <textarea id="q4"></textarea>
+            <button class="btn" onclick="checkQ4()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s4')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f4', '因為原子或分子運動加劇，間距增大，導致體積膨脹')">顯示答案</button>
+            <div id="s4" class="strategy">
+                <strong>解題策略：</strong>
+                思考溫度對粒子運動和間距的影響。
+            </div>
+            <p id="f4"></p>
+        </div>
+
+        <div class="question">
+            <strong>問題 5：</strong>
+            電子在原子能階之間躍遷時，會發生什麼現象？
+            <textarea id="q5"></textarea>
+            <button class="btn" onclick="checkQ5()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s5')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f5', '會吸收或放出光子，產生光')">顯示答案</button>
+            <div id="s5" class="strategy">
+                <strong>解題策略：</strong>
+                回憶電子躍遷與光子的關係。
+            </div>
+            <p id="f5"></p>
+        </div>
+
+        <div class="navigation-buttons">
+            <a href="https://guidephy.github.io/guidephy/PhysicsForGSAT/CH2/Lesson1.html" class="nav-btn">
+                <span>&larr;</span> 第二章:物體的運動
+            </a>
+            <a href="Lesson2.html" class="nav-btn">
+                <span>&darr;</span> 下一單元:3-2 原子的結構
+            </a>
+        </div>    
+    </div>
+
+    <script>
+        // 切換解題策略顯示/隱藏
+        function toggleStrategy(id) {
+            const strategyDiv = document.getElementById(id);
+            if (strategyDiv.style.display === "none" || strategyDiv.style.display === "") {
+                strategyDiv.style.display = "block";
+            } else {
+                strategyDiv.style.display = "none";
+            }
+        }
+
+        // 通用函數 - 顯示答案
+        function toggleAnswer(id, correctAnswer) {
+            const feedback = document.getElementById(id);
+            if (feedback.style.display === "none" || feedback.style.display === "") {
+                feedback.textContent = "正確答案是：" + correctAnswer + "。";
+                feedback.className = "";
+                feedback.style.display = "block";
+            } else {
+                feedback.style.display = "none";
+            }
+        }
+
+        // 問題 1
+        function checkQ1() {
+            const answer = document.getElementById("q1").value.trim();
+            const feedback = document.getElementById("f1");
+            if ((answer.includes("原子排列") || answer.includes("結構")) && (answer.includes("不同") || answer.includes("差異")) && (answer.includes("性質") || answer.includes("特性"))) {
+                feedback.textContent = "正確！因為碳原子的排列方式不同，導致物理性質的差異。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請解釋原子排列如何影響物質性質。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 2
+        function checkQ2() {
+            const answer = document.getElementById("q2").value.trim();
+            const feedback = document.getElementById("f2");
+            if ((answer.includes("1 奈米等於 10 埃") || (answer.includes("1 nm") && answer.includes("10 Å"))) && (answer.includes("原子核") && answer.includes("1 fm"))) {
+                feedback.textContent = "正確！1 奈米等於 10 埃；原子核大小約為 1 飛米。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請提供正確的單位換算和原子核大小。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 3
+        function checkQ3() {
+            const answer = document.getElementById("q3").value.trim();
+            const feedback = document.getElementById("f3");
+            if ((answer.includes("降低") || answer.includes("下降")) && (answer.includes("冰的體積比水大") || answer.includes("液態體積較小") || answer.includes("壓力有利於液態"))) {
+                feedback.textContent = "正確！水的凝固點會降低，因為冰的體積比水大，壓力增加有利於液態。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請解釋壓力增加對水的凝固點的影響及原因。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 4
+        function checkQ4() {
+            const answer = document.getElementById("q4").value.trim();
+            const feedback = document.getElementById("f4");
+            if ((answer.includes("原子") || answer.includes("分子")) && (answer.includes("運動加劇") || answer.includes("熱擾動增加")) && (answer.includes("間距增大") || answer.includes("佔據更大空間")) && (answer.includes("體積膨脹") || answer.includes("體積增大"))) {
+                feedback.textContent = "正確！因為原子或分子運動加劇，間距增大，導致體積膨脹。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請從原子運動和間距變化的角度解釋。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 5
+        function checkQ5() {
+            const answer = document.getElementById("q5").value.trim();
+            const feedback = document.getElementById("f5");
+            if ((answer.includes("吸收") || answer.includes("放出")) && (answer.includes("光子")) && (answer.includes("產生光") || answer.includes("發光"))) {
+                feedback.textContent = "正確！會吸收或放出光子，產生光。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請解釋電子躍遷時的現象。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+    </script>
+</body>
+</html>

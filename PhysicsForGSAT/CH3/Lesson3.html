@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CH3 物質的組成與交互作用</title>
+    <style>
+        body {
+           font-family: Arial, sans-serif;
+           margin: 0;
+           padding: 0;
+           line-height: 1.6;
+           background-color: #f9f9f9;
+           color: #333;
+       }
+       .container {
+           max-width: 800px;
+           margin: 20px auto;
+           padding: 20px;
+           background: white;
+           border-radius: 8px;
+           box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+       }
+       h1, h2 {
+           color: #4CAF50;
+       }
+       h1 {
+           border-bottom: 2px solid #4CAF50;
+           padding-bottom: 10px;
+       }
+       ul, ol {
+           margin-left: 20px;
+       }
+       .highlight {
+           background-color: #e8f5e9;
+           padding: 10px;
+           border-left: 4px solid #4CAF50;
+           margin: 10px 0;
+       }
+       .question {
+           background-color: #fff3cd;
+           padding: 10px;
+           border-left: 4px solid #ffc107;
+           margin: 10px 0;
+       }
+       .btn {
+           display: inline-block;
+           padding: 10px 20px;
+           margin-top: 10px;
+           background-color: #4CAF50;
+           color: white;
+           text-decoration: none;
+           border-radius: 5px;
+           border: none;
+           cursor: pointer;
+       }
+       .btn:hover {
+           background-color: #45a049;
+       }
+       textarea {
+           width: 100%;
+           height: 50px;
+           margin: 10px 0;
+           font-family: Arial, sans-serif;
+           font-size: 14px;
+           resize: vertical;
+           padding: 5px;
+       }
+       #feedback {
+           margin-top: 10px;
+           font-weight: bold;
+       }
+       .correct {
+           color: green;
+       }
+       .incorrect {
+           color: red;
+       }
+       .strategy {
+           display: none;
+           background-color: #e0f7fa;
+           padding: 10px;
+           border-left: 4px solid #00acc1;
+           margin-top: 10px;
+       }
+       .navigation-buttons {
+           display: flex;
+           justify-content: center;
+           gap: 10px;
+           margin-top: 20px;
+           padding: 10px 0;
+           background-color: #f0f0f0;
+           border-top: 1px solid #ddd;
+       }
+       .nav-btn {
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           padding: 8px 15px;
+           background: linear-gradient(45deg, #4caf50, #81c784);
+           color: white;
+           text-decoration: none;
+           border-radius: 20px;
+           font-weight: bold;
+           font-size: 14px;
+           transition: transform 0.3s, background-color 0.3s;
+           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+       }
+       .nav-btn span {
+           font-size: 16px;
+           margin-right: 5px;
+       }
+       .nav-btn:hover {
+           background-color: #45a049;
+           transform: scale(1.05);
+       }
+       /* 新增 .formula 類別 */
+       .formula {
+           background-color: #e8f5e9;
+           padding: 2px 4px;
+           font-size: 150%;
+       }
+   </style>
+</head>
+<body>
+   <div class="container">
+       <h1>3-3 基本交互作用</h1>
+
+       <!-- 3.3.1 自然界的四種基本交互作用 -->
+       <h2>3.3.1 自然界的四種基本交互作用</h2>
+       <p>在自然界中，所有的物理現象都可以歸因於四種基本的交互作用，也稱為<strong>基本力</strong>：</p>
+       <ol>
+           <li><strong>重力</strong></li>
+           <li><strong>電磁力</strong></li>
+           <li><strong>強核力</strong></li>
+           <li><strong>弱核力</strong></li>
+       </ol>
+
+       <!-- 問題集 -->
+       <div class="question">
+           <strong>問題 1：</strong>
+           自然界的四種基本交互作用是什麼？
+           <textarea id="q1"></textarea>
+           <button class="btn" onclick="checkQ1()">提交</button>
+           <button class="btn" onclick="toggleStrategy('s1')">解題策略</button>
+           <button class="btn" onclick="toggleAnswer('f1', '重力、電磁力、強核力、弱核力')">顯示答案</button>
+           <div id="s1" class="strategy">
+               <strong>解題策略：</strong>
+               回憶基本力的種類，可以從最常見的力開始列舉。
+           </div>
+           <p id="f1"></p>
+       </div>
+
+       <!-- 3.3.2 重力 -->
+       <h2>3.3.2 重力</h2>
+       <p><strong>重力</strong>是由英國科學家<strong>牛頓（Isaac Newton）</strong>提出的萬有引力定律所描述的力。</p>
+
+       <p>萬有引力定律指出：</p>
+       <div class="highlight">
+           <p><strong>萬有引力定律公式：</strong></p>
+           <p><span class="formula">F = G × (m₁ × m₂) / r²</span></p>
+           <ul>
+               <li><span class="formula">F</span>：引力大小</li>
+               <li><span class="formula">G</span>：萬有引力常數</li>
+               <li><span class="formula">m₁</span>、<span class="formula">m₂</span>：兩個質點的質量</li>
+               <li><span class="formula">r</span>：兩質點間的距離</li>
+           </ul>
+       </div>
+
+       <!-- 問題集 -->
+       <div class="question">
+           <strong>問題 2：</strong>
+           萬有引力定律的主要內容是什麼？引力與哪些因素有關？
+           <textarea id="q2"></textarea>
+           <button class="btn" onclick="checkQ2()">提交</button>
+           <button class="btn" onclick="toggleStrategy('s2')">解題策略</button>
+           <button class="btn" onclick="toggleAnswer('f2', '引力與質量乘積成正比，與距離平方成反比')">顯示答案</button>
+           <div id="s2" class="strategy">
+               <strong>解題策略：</strong>
+               回憶公式中的比例關係，注意質量和距離的影響。
+           </div>
+           <p id="f2"></p>
+       </div>
+
+       <!-- 新增計算題 -->
+       <div class="question">
+           <strong>問題 3：</strong>
+           已知兩個質量分別為 5 kg 和 10 kg 的物體，相距 2 m，求它們之間的引力大小。（G = 6.67 × 10<sup>-11</sup> N·m²/kg²）
+           <textarea id="q3"></textarea>
+           <button class="btn" onclick="checkQ3()">提交</button>
+           <button class="btn" onclick="toggleStrategy('s3')">解題策略</button>
+           <button class="btn" onclick="toggleAnswer('f3', '1.6675 × 10^-10 N')">顯示答案</button>
+           <div id="s3" class="strategy">
+               <strong>解題策略：</strong>
+               使用萬有引力定律公式，代入已知質量和距離計算。
+           </div>
+           <p id="f3"></p>
+       </div>
+
+       <div class="question">
+           <strong>問題 4：</strong>
+           如果將上題中兩物體的距離加倍，則引力將變為多少？
+           <textarea id="q4"></textarea>
+           <button class="btn" onclick="checkQ4()">提交</button>
+           <button class="btn" onclick="toggleStrategy('s4')">解題策略</button>
+           <button class="btn" onclick="toggleAnswer('f4', '4.16875 × 10^-11 N')">顯示答案</button>
+           <div id="s4" class="strategy">
+               <strong>解題策略：</strong>
+               距離加倍，引力與距離平方成反比，計算新的引力。
+           </div>
+           <p id="f4"></p>
+       </div>
+
+       <div class="question">
+           <strong>問題 5：</strong>
+           地球的質量約為 5.97 × 10<sup>24</sup> kg，月球的質量約為 7.35 × 10<sup>22</sup> kg，兩者中心距離約為 3.84 × 10<sup>8</sup> m，求地球與月球之間的引力大小。（G = 6.67 × 10<sup>-11</sup> N·m²/kg²）
+           <textarea id="q5"></textarea>
+           <button class="btn" onclick="checkQ5()">提交</button>
+           <button class="btn" onclick="toggleStrategy('s5')">解題策略</button>
+           <button class="btn" onclick="toggleAnswer('f5', '1.99 × 10^20 N')">顯示答案</button>
+           <div id="s5" class="strategy">
+               <strong>解題策略：</strong>
+               直接代入萬有引力定律公式計算。
+           </div>
+           <p id="f5"></p>
+       </div>
+
+       <!-- 3.3.3 電磁力 -->
+       <h2>3.3.3 電磁力</h2>
+       <p><strong>電磁力</strong>包括<strong>靜電力</strong>和<strong>磁力</strong>，是帶電粒子之間的交互作用。</p>
+
+       <h3>1. 靜電力</h3>
+       <p>靜電力描述了帶電粒子之間的作用：</p>
+       <ul>
+           <li>同性電荷相斥，異性電荷相吸。</li>
+           <li>由<strong>庫侖定律</strong>描述：</li>
+       </ul>
+
+       <div class="highlight">
+           <p><strong>庫侖定律公式：</strong></p>
+           <p><span class="formula">F = k × (q₁ × q₂) / r²</span></p>
+           <ul>
+               <li><span class="formula">F</span>：靜電力大小</li>
+               <li><span class="formula">k</span>：靜電力常數</li>
+               <li><span class="formula">q₁</span>、<span class="formula">q₂</span>：兩點電荷的電量</li>
+               <li><span class="formula">r</span>：兩電荷間的距離</li>
+           </ul>
+       </div>
+
+       <h3>2. 磁力</h3>
+       <p>磁力涉及磁極和磁場：</p>
+       <ul>
+           <li>磁鐵有<strong>N 極</strong>和<strong>S 極</strong>，同性磁極相斥，異性磁極相吸。</li>
+           <li>磁場用<strong>磁力線</strong>表示，具有以下特性：</li>
+           <ul>
+               <li>磁力線是封閉曲線，從 N 極出發回到 S 極。</li>
+               <li>磁力線不相交。</li>
+               <li>磁力線的切線方向代表該點的磁場方向。</li>
+               <li>磁力線的密度表示磁場的強弱，密度越大，磁場越強。</li>
+           </ul>
+           <li>地球本身就是一個巨大的磁體，地磁南極在地理北極附近，地磁北極在地理南極附近。</li>
+       </ul>
+
+       <h3>3. 電磁力的廣泛性</h3>
+       <p>所有的<strong>接觸力</strong>（如摩擦力、彈力）在微觀尺度上都是由電磁力產生的。</p>
+
+       <!-- 問題集 -->
+       <div class="question">
+           <strong>問題 6：</strong>
+           庫侖定律描述了什麼現象？靜電力與哪些因素有關？
+           <textarea id="q6"></textarea>
+           <button class="btn" onclick="checkQ6()">提交</button>
+           <button class="btn" onclick="toggleStrategy('s6')">解題策略</button>
+           <button class="btn" onclick="toggleAnswer('f6', '描述電荷間的靜電力；與電量乘積成正比，與距離平方成反比')">顯示答案</button>
+           <div id="s6" class="strategy">
+               <strong>解題策略：</strong>
+               回憶庫侖定律的公式和電荷間作用的特性。
+           </div>
+           <p id="f6"></p>
+       </div>
+
+       <div class="question">
+           <strong>問題 7：</strong>
+           磁力線有哪些特性？如何表示磁場的強弱？
+           <textarea id="q7"></textarea>
+           <button class="btn" onclick="checkQ7()">提交</button>
+           <button class="btn" onclick="toggleStrategy('s7')">解題策略</button>
+           <button class="btn" onclick="toggleAnswer('f7', '磁力線是封閉曲線，不相交，切線方向代表磁場方向；磁力線密度表示磁場強弱')">顯示答案</button>
+           <div id="s7" class="strategy">
+               <strong>解題策略：</strong>
+               回憶磁力線的定義和特性，思考如何用它表示磁場。
+           </div>
+           <p id="f7"></p>
+       </div>
+
+       <!-- 新增計算題 -->
+       <div class="question">
+           <strong>問題 8：</strong>
+           兩個點電荷，電量分別為 2 × 10<sup>-6</sup> C 和 3 × 10<sup>-6</sup> C，相距 0.5 m，求它們之間的靜電力大小。（k = 8.99 × 10<sup>9</sup> N·m²/C²）
+           <textarea id="q8"></textarea>
+           <button class="btn" onclick="checkQ8()">提交</button>
+           <button class="btn" onclick="toggleStrategy('s8')">解題策略</button>
+           <button class="btn" onclick="toggleAnswer('f8', '0.21576 N')">顯示答案</button>
+           <div id="s8" class="strategy">
+               <strong>解題策略：</strong>
+               使用庫侖定律公式，代入已知電量和距離計算。
+           </div>
+           <p id="f8"></p>
+       </div>
+
+       <div class="question">
+           <strong>問題 9：</strong>
+           如果將上題中兩點電荷的距離減半，則靜電力將變為多少？
+           <textarea id="q9"></textarea>
+           <button class="btn" onclick="checkQ9()">提交</button>
+           <button class="btn" onclick="toggleStrategy('s9')">解題策略</button>
+           <button class="btn" onclick="toggleAnswer('f9', '0.86304 N')">顯示答案</button>
+           <div id="s9" class="strategy">
+               <strong>解題策略：</strong>
+               距離減半，靜電力與距離平方成反比，計算新的靜電力。
+           </div>
+           <p id="f9"></p>
+       </div>
+
+       <div class="question">
+           <strong>問題 10：</strong>
+           兩個相同的負電荷，相距 1 m，之間的排斥力為 0.05 N，求每個電荷的電量大小。（k = 8.99 × 10<sup>9</sup> N·m²/C²）
+           <textarea id="q10"></textarea>
+           <button class="btn" onclick="checkQ10()">提交</button>
+           <button class="btn" onclick="toggleStrategy('s10')">解題策略</button>
+           <button class="btn" onclick="toggleAnswer('f10', '7.45 × 10^-6 C')">顯示答案</button>
+           <div id="s10" class="strategy">
+               <strong>解題策略：</strong>
+               設兩電荷電量相同，使用庫侖定律公式，解方程求電量。
+           </div>
+           <p id="f10"></p>
+       </div>
+
+       <!-- 3.3.4 強核力 -->
+       <h2>3.3.4 強核力</h2>
+       <p><strong>強核力</strong>是最強的基本交互作用，由日本物理學家<strong>湯川秀樹</strong>提出。</p>
+
+       <p>特點：</p>
+       <ul>
+           <li>作用於<strong>夸克</strong>之間，將質子和中子束縛在原子核內。</li>
+           <li>作用範圍極短，約為 10<sup>-15</sup> 公尺（1 飛米）。</li>
+           <li>負責維持原子核的穩定性，克服質子間的電磁斥力。</li>
+       </ul>
+
+       <!-- 問題集 -->
+       <div class="question">
+           <strong>問題 11：</strong>
+           強核力的作用對象是什麼？其作用範圍有多大？
+           <textarea id="q11"></textarea>
+           <button class="btn" onclick="checkQ11()">提交</button>
+           <button class="btn" onclick="toggleStrategy('s11')">解題策略</button>
+           <button class="btn" onclick="toggleAnswer('f11', '作用於夸克間，將質子和中子束縛在一起；作用範圍約10^-15公尺')">顯示答案</button>
+           <div id="s11" class="strategy">
+               <strong>解題策略：</strong>
+               記住強核力的作用對象和其極短的作用範圍。
+           </div>
+           <p id="f11"></p>
+       </div>
+
+       <!-- 3.3.5 弱核力 -->
+       <h2>3.3.5 弱核力</h2>
+       <p><strong>弱核力</strong>由義大利物理學家<strong>費米（Enrico Fermi）</strong>提出。</p>
+
+       <p>特點：</p>
+       <ul>
+           <li>負責粒子的衰變，例如原子核的<strong>β 衰變</strong>。</li>
+           <li>作用範圍更短，約為 10<sup>-18</sup> 公尺。</li>
+           <li>涉及基本粒子的轉換，例如中子轉變為質子。</li>
+       </ul>
+
+       <div class="highlight">
+           <p><strong>β 衰變反應式：</strong></p>
+           <p><span class="formula">n → p + e⁻ + ν̄</span></p>
+           <ul>
+               <li><span class="formula">n</span>：中子</li>
+               <li><span class="formula">p</span>：質子</li>
+               <li><span class="formula">e⁻</span>：電子</li>
+               <li><span class="formula">ν̄</span>：反中微子</li>
+           </ul>
+       </div>
+
+       <!-- 問題集 -->
+       <div class="question">
+           <strong>問題 12：</strong>
+           弱核力主要導致什麼現象？其作用範圍如何？
+           <textarea id="q12"></textarea>
+           <button class="btn" onclick="checkQ12()">提交</button>
+           <button class="btn" onclick="toggleStrategy('s12')">解題策略</button>
+           <button class="btn" onclick="toggleAnswer('f12', '導致粒子衰變，如β衰變；作用範圍極短，約10^-18公尺')">顯示答案</button>
+           <div id="s12" class="strategy">
+               <strong>解題策略：</strong>
+               記住弱核力與粒子衰變的關係，以及其比強核力更短的作用範圍。
+           </div>
+           <p id="f12"></p>
+       </div>
+
+       <!-- 3.3.6 基本交互作用的統整 -->
+       <h2>3.3.6 基本交互作用的統整</h2>
+       <p>四種基本交互作用在<strong>強度</strong>和<strong>作用範圍</strong>上有所不同：</p>
+
+       <h3>強度排序（由強至弱）</h3>
+       <ol>
+           <li><strong>強核力</strong></li>
+           <li><strong>電磁力</strong></li>
+           <li><strong>弱核力</strong></li>
+           <li><strong>重力</strong></li>
+       </ol>
+
+       <h3>作用範圍排序（由大至小）</h3>
+       <ol>
+           <li><strong>重力 ≈ 電磁力</strong>（無限遠）</li>
+           <li><strong>強核力</strong></li>
+           <li><strong>弱核力</strong></li>
+       </ol>
+
+       <!-- 問題集 -->
+       <div class="question">
+           <strong>問題 13：</strong>
+           在強度上，哪種基本力最弱？哪種最強？
+           <textarea id="q13"></textarea>
+           <button class="btn" onclick="checkQ13()">提交</button>
+           <button class="btn" onclick="toggleStrategy('s13')">解題策略</button>
+           <button class="btn" onclick="toggleAnswer('f13', '最弱是重力，最強是強核力')">顯示答案</button>
+           <div id="s13" class="strategy">
+               <strong>解題策略：</strong>
+               回憶強度排序，從最常見的力開始思考。
+           </div>
+           <p id="f13"></p>
+       </div>
+
+       <div class="question">
+           <strong>問題 14：</strong>
+           哪兩種基本力的作用範圍是無限遠的？
+           <textarea id="q14"></textarea>
+           <button class="btn" onclick="checkQ14()">提交</button>
+           <button class="btn" onclick="toggleStrategy('s14')">解題策略</button>
+           <button class="btn" onclick="toggleAnswer('f14', '重力和電磁力')">顯示答案</button>
+           <div id="s14" class="strategy">
+               <strong>解題策略：</strong>
+               思考哪些力可以在宇宙尺度上影響物體。
+           </div>
+           <p id="f14"></p>
+       </div>
+
+       <div class="navigation-buttons">
+           <a href="Lesson2.html" class="nav-btn">
+               <span>&uarr;</span> 上一單元:3-2 原子的結構
+           </a>
+           <a href="https://guidephy.github.io/guidephy/PhysicsForGSAT/CH4/Lesson1.html" class="nav-btn">
+               <span>&rarr;</span> 第四章: 電力磁的統一
+           </a>
+       </div>    
+   </div>
+
+   <script>
+        // 切換解題策略顯示/隱藏
+        function toggleStrategy(id) {
+            const strategyDiv = document.getElementById(id);
+            if (strategyDiv.style.display === "none" || strategyDiv.style.display === "") {
+                strategyDiv.style.display = "block";
+            } else {
+                strategyDiv.style.display = "none";
+            }
+        }
+
+        // 通用函數 - 顯示答案
+        function toggleAnswer(id, correctAnswer) {
+            const feedback = document.getElementById(id);
+            if (feedback.style.display === "none" || feedback.style.display === "") {
+                feedback.textContent = "正確答案是：" + correctAnswer + "。";
+                feedback.className = "";
+                feedback.style.display = "block";
+            } else {
+                feedback.style.display = "none";
+            }
+        }
+
+                // 問題 1
+        function checkQ1() {
+            const answer = document.getElementById("q1").value.trim();
+            const feedback = document.getElementById("f1");
+            if ((answer.includes("重力") || answer.includes("萬有引力")) && answer.includes("電磁力") && answer.includes("強核力") && answer.includes("弱核力")) {
+                feedback.textContent = "正確！重力、電磁力、強核力、弱核力。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請列出四種基本交互作用。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 2
+        function checkQ2() {
+            const answer = document.getElementById("q2").value.trim();
+            const feedback = document.getElementById("f2");
+            if ((answer.includes("引力與質量乘積成正比") || answer.includes("質量越大，引力越大")) && (answer.includes("與距離平方成反比") || answer.includes("距離越遠，引力越小"))) {
+                feedback.textContent = "正確！引力與質量乘積成正比，與距離平方成反比。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請描述萬有引力定律的主要內容。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 3
+        function checkQ3() {
+            const answer = document.getElementById("q3").value.trim();
+            const feedback = document.getElementById("f3");
+            const correctAnswer = 1.6675e-10;
+            if (Math.abs(parseFloat(answer) - correctAnswer) < 1e-12) {
+                feedback.textContent = "正確！兩物體之間的引力大小為 1.6675 × 10^-10 N。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不正確，請再計算一次。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 4
+        function checkQ4() {
+            const answer = document.getElementById("q4").value.trim();
+            const correctAnswer = 4.16875e-11;
+            if (Math.abs(parseFloat(answer) - correctAnswer) < 1e-13) {
+                feedback.textContent = "正確！引力變為 4.16875 × 10^-11 N。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不正確，請注意引力與距離平方成反比的關係。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 5
+        function checkQ5() {
+            const answer = document.getElementById("q5").value.trim();
+            const correctAnswer = 1.99e20;
+            if (Math.abs(parseFloat(answer) - correctAnswer) < 1e18) {
+                feedback.textContent = "正確！地球與月球之間的引力大小為約 1.99 × 10^20 N。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不正確，請再計算一次，注意科學記號的使用。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 6
+        function checkQ6() {
+            const answer = document.getElementById("q6").value.trim();
+            const feedback = document.getElementById("f6");
+            if ((answer.includes("描述電荷間的靜電力") || answer.includes("電荷之間的作用力")) && (answer.includes("電量乘積成正比") || answer.includes("電量越大，力越大")) && (answer.includes("距離平方成反比") || answer.includes("距離越遠，力越小"))) {
+                feedback.textContent = "正確！描述電荷間的靜電力；與電量乘積成正比，與距離平方成反比。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請說明庫侖定律的內容和靜電力的影響因素。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 7
+        function checkQ7() {
+            const answer = document.getElementById("q7").value.trim();
+            const feedback = document.getElementById("f7");
+            if ((answer.includes("磁力線是封閉曲線") || answer.includes("從N極出發回到S極")) && (answer.includes("不相交") || answer.includes("不會交叉")) && (answer.includes("切線方向代表磁場方向") || answer.includes("磁場方向")) && (answer.includes("密度表示磁場強度") || answer.includes("密度越大，磁場越強"))) {
+                feedback.textContent = "正確！磁力線是封閉曲線，不相交，切線方向代表磁場方向；磁力線密度表示磁場強弱。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請描述磁力線的特性和如何表示磁場強弱。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 8
+        function checkQ8() {
+            const answer = document.getElementById("q8").value.trim();
+            const correctAnswer = 0.21576;
+            if (Math.abs(parseFloat(answer) - correctAnswer) < 0.001) {
+                feedback.textContent = "正確！靜電力大小為約 0.21576 N。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不正確，請再計算一次。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 9
+        function checkQ9() {
+            const answer = document.getElementById("q9").value.trim();
+            const correctAnswer = 0.86304;
+            if (Math.abs(parseFloat(answer) - correctAnswer) < 0.001) {
+                feedback.textContent = "正確！靜電力增加為約 0.86304 N。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不正確，請注意靜電力與距離平方成反比的關係。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 10
+        function checkQ10() {
+            const answer = document.getElementById("q10").value.trim();
+            const correctAnswer = 7.45e-6;
+            if (Math.abs(parseFloat(answer) - correctAnswer) < 1e-7) {
+                feedback.textContent = "正確！每個電荷的電量為約 7.45 × 10^-6 C。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不正確，請設未知數解方程再計算一次。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 11
+        function checkQ11() {
+            const answer = document.getElementById("q11").value.trim();
+            const feedback = document.getElementById("f11");
+            if ((answer.includes("作用於夸克間") || answer.includes("夸克之間的作用")) && (answer.includes("束縛質子和中子") || answer.includes("將核子束縛在一起")) && (answer.includes("約10^-15公尺") || answer.includes("10的負15次方公尺") || answer.includes("1飛米"))) {
+                feedback.textContent = "正確！作用於夸克間，將質子和中子束縛在一起；作用範圍約10^-15公尺。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請說明強核力的作用對象和範圍。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 12
+        function checkQ12() {
+            const answer = document.getElementById("q12").value.trim();
+            const feedback = document.getElementById("f12");
+            if ((answer.includes("粒子衰變") || answer.includes("β衰變") || answer.includes("放射性衰變")) && (answer.includes("約10^-18公尺") || answer.includes("10的負18次方公尺") || answer.includes("範圍更短"))) {
+                feedback.textContent = "正確！導致粒子衰變，如β衰變；作用範圍極短，約10^-18公尺。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請描述弱核力的作用和範圍。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 13
+        function checkQ13() {
+            const answer = document.getElementById("q13").value.trim();
+            const feedback = document.getElementById("f13");
+            if ((answer.includes("最弱是重力") || answer.includes("重力最弱")) && (answer.includes("最強是強核力") || answer.includes("強核力最強"))) {
+                feedback.textContent = "正確！最弱是重力，最強是強核力。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請指出最強和最弱的基本力。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 14
+        function checkQ14() {
+            const answer = document.getElementById("q14").value.trim();
+            const feedback = document.getElementById("f14");
+            if ((answer.includes("重力") || answer.includes("萬有引力")) && (answer.includes("電磁力"))) {
+                feedback.textContent = "正確！重力和電磁力。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請列出作用範圍無限遠的兩種基本力。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+
+    </script>
+</body>
+</html>
+
