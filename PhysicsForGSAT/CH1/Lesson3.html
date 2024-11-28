@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CH1 科學的態度與方法<</title>
+    <style>
+        body {
+           font-family: Arial, sans-serif;
+           margin: 0;
+           padding: 0;
+           line-height: 1.6;
+           background-color: #f9f9f9;
+           color: #333;
+       }
+       .container {
+           max-width: 800px;
+           margin: 20px auto;
+           padding: 20px;
+           background: white;
+           border-radius: 8px;
+           box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+       }
+       h1, h2, h3 {
+           color: #4CAF50;
+       }
+       h1 {
+           border-bottom: 2px solid #4CAF50;
+           padding-bottom: 10px;
+       }
+       ul, ol {
+           margin-left: 20px;
+       }
+       .highlight {
+           background-color: #e8f5e9;
+           padding: 10px;
+           border-left: 4px solid #4CAF50;
+           margin: 10px 0;
+       }
+       .question {
+           background-color: #fff3cd;
+           padding: 10px;
+           border-left: 4px solid #ffc107;
+           margin: 10px 0;
+       }
+       .btn {
+           display: inline-block;
+           padding: 10px 20px;
+           margin-top: 10px;
+           background-color: #4CAF50;
+           color: white;
+           text-decoration: none;
+           border-radius: 5px;
+           border: none;
+           cursor: pointer;
+       }
+       .btn:hover {
+           background-color: #45a049;
+       }
+       textarea {
+           width: 100%;
+           height: 50px;
+           margin: 10px 0;
+           font-family: Arial, sans-serif;
+           font-size: 14px;
+           resize: vertical;
+           padding: 5px;
+       }
+       #feedback {
+           margin-top: 10px;
+           font-weight: bold;
+       }
+       .correct {
+           color: green;
+       }
+       .incorrect {
+           color: red;
+       }
+       .strategy {
+           display: none;
+           background-color: #e0f7fa;
+           padding: 10px;
+           border-left: 4px solid #00acc1;
+           margin-top: 10px;
+       }
+       .navigation-buttons {
+           display: flex;
+           justify-content: center;
+           gap: 10px;
+           margin-top: 20px;
+           padding: 10px 0;
+           background-color: #f0f0f0;
+           border-top: 1px solid #ddd;
+       }
+       .nav-btn {
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           padding: 8px 15px;
+           background: linear-gradient(45deg, #4caf50, #81c784);
+           color: white;
+           text-decoration: none;
+           border-radius: 20px;
+           font-weight: bold;
+           font-size: 14px;
+           transition: transform 0.3s, background-color 0.3s;
+           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+       }
+       .nav-btn span {
+           font-size: 16px;
+           margin-right: 5px;
+       }
+       .nav-btn:hover {
+           background-color: #45a049;
+           transform: scale(1.05);
+       }
+       /* .formula 類別僅用於公式和符號 */
+       .formula {
+           background-color: #e8f5e9;
+           padding: 2px 4px;
+           font-size: 100%;
+       }
+   </style>
+</head>
+<body>
+   <div class="container">
+       <h1>1-3 物理學簡介</h1>
+
+       <!-- 1.3.1 古典物理 -->
+       <h2>1.3.1 古典物理</h2>
+       <div >
+           <p>古典物理是指 20 世紀初量子力學和相對論出現之前的物理學，涵蓋了<strong>力學</strong>、<strong>熱學</strong>、<strong>電磁學</strong>、<strong>光學</strong>等領域。在其發展歷程中，許多科學家做出了重要貢獻：</p>
+           <ul >
+               <li><strong>牛頓</strong>：他的著作《自然哲學的數學原理》奠定了古典力學的基礎，提出了牛頓三大運動定律和萬有引力定律，並發展了微積分。</li>
+               <li><strong>焦耳</strong>：他通過熱功當量實驗證實了熱也是能量的一種形式，推動了熱力學的發展。</li>
+               <li><strong>馬克士威</strong>：他統一了電學和磁學理論，提出了馬克士威方程組，預言了電磁波的存在，為現代電磁學奠定了基礎。</li>
+           </ul>
+       </div>
+
+       <!-- 問題集 -->
+       <div class="question">
+           <strong>問題 1：</strong>
+           古典物理涵蓋了哪些主要領域？請列舉三位對古典物理有重大貢獻的科學家。
+           <textarea id="q1"></textarea>
+           <button class="btn" onclick="checkQ1()">提交</button>
+           <button class="btn" onclick="toggleStrategy('s1')">解題策略</button>
+           <button class="btn" onclick="toggleAnswer('f1', '涵蓋力學、熱學、電磁學、光學；科學家有牛頓、焦耳、馬克士威')">顯示答案</button>
+           <div id="s1" class="strategy">
+               <strong>解題策略：</strong>
+               回憶古典物理涉及的領域和在教學內容中提到的科學家。
+           </div>
+           <p id="f1"></p>
+       </div>
+
+       <h3>古典物理的特色</h3>
+       <div >
+           <p>古典物理的特色包括：</p>
+           <ul >
+               <li><strong>以巨觀世界為主要研究對象</strong>：研究肉眼可見的物體的運動和相互作用，例如行星的運動、物體的碰撞、熱的傳遞、光的折射等。</li>
+               <li><strong>強調決定論</strong>：認為如果知道了系統的初始狀態和作用力，就可以預測系統未來的狀態。</li>
+               <li><strong>注重實驗驗證</strong>：理論建立在大量的實驗觀測和測量數據之上，並通過實驗來驗證理論的正確性。</li>
+               <li><strong>以數學為主要工具</strong>：使用微積分、微分方程等數學工具來描述物理現象和建立物理模型。</li>
+           </ul>
+       </div>
+
+       <!-- 問題集 -->
+       <div class="question">
+           <strong>問題 2：</strong>
+           古典物理的主要特色是什麼？請簡述其中兩點。
+           <textarea id="q2"></textarea>
+           <button class="btn" onclick="checkQ2()">提交</button>
+           <button class="btn" onclick="toggleStrategy('s2')">解題策略</button>
+           <button class="btn" onclick="toggleAnswer('f2', '以巨觀世界為研究對象、強調決定論、注重實驗驗證、以數學為工具')">顯示答案</button>
+           <div id="s2" class="strategy">
+               <strong>解題策略：</strong>
+               回憶古典物理的特色列表，並選擇兩點進行簡述。
+           </div>
+           <p id="f2"></p>
+       </div>
+
+       <!-- 1.3.2 近代物理 -->
+       <h2>1.3.2 近代物理</h2>
+       <div >
+           <p>隨著 20 世紀初的發展，人們發現古典物理在解釋微觀世界和高速運動現象時遇到了困難，例如：</p>
+           <ul >
+               <li><strong>黑體輻射</strong>：古典物理無法解釋黑體輻射的能量分布規律。</li>
+               <li><strong>光電效應</strong>：古典物理無法解釋光電效應中電子的能量與光的頻率之間的關係。</li>
+               <li><strong>邁克生-莫雷實驗</strong>：古典物理無法解釋該實驗的結果，即光速在不同慣性系中是相同的。</li>
+           </ul>
+           <p>這些問題的出現，促使了<strong>近代物理</strong>的誕生，<strong>量子力學</strong>和<strong>相對論</strong>成為了其兩大基石。</p>
+       </div>
+
+       <!-- 問題集 -->
+       <div class="question">
+           <strong>問題 3：</strong>
+           古典物理在哪些現象的解釋上遇到了困難？請舉出兩個例子。
+           <textarea id="q3"></textarea>
+           <button class="btn" onclick="checkQ3()">提交</button>
+           <button class="btn" onclick="toggleStrategy('s3')">解題策略</button>
+           <button class="btn" onclick="toggleAnswer('f3', '黑體輻射、光電效應、邁克生-莫雷實驗')">顯示答案</button>
+           <div id="s3" class="strategy">
+               <strong>解題策略：</strong>
+               回憶教學內容中提到的古典物理無法解釋的現象。
+           </div>
+           <p id="f3"></p>
+       </div>
+
+       <div class="question">
+           <strong>問題 4：</strong>
+           近代物理的兩大基石是什麼？
+           <textarea id="q4"></textarea>
+           <button class="btn" onclick="checkQ4()">提交</button>
+           <button class="btn" onclick="toggleStrategy('s4')">解題策略</button>
+           <button class="btn" onclick="toggleAnswer('f4', '量子力學和相對論')">顯示答案</button>
+           <div id="s4" class="strategy">
+               <strong>解題策略：</strong>
+               思考在解決古典物理問題時，新出現的理論是哪些。
+           </div>
+           <p id="f4"></p>
+       </div>
+
+       <!-- 總結 -->
+       <h2>1.3.3 總結</h2>
+       <div >
+           <p>物理學的發展經歷了從<strong>古典物理</strong>到<strong>近代物理</strong>的轉變。古典物理專注於巨觀世界，強調決定論和實驗驗證，而近代物理則引入了新的理論，如量子力學和相對論，來解釋微觀和高速運動現象。</p>
+       </div>
+
+       <!-- 問題集 -->
+       <div class="question">
+           <strong>問題 5：</strong>
+           簡述古典物理和近代物理的主要區別。
+           <textarea id="q5"></textarea>
+           <button class="btn" onclick="checkQ5()">提交</button>
+           <button class="btn" onclick="toggleStrategy('s5')">解題策略</button>
+           <button class="btn" onclick="toggleAnswer('f5', '古典物理研究巨觀現象，強調決定論；近代物理研究微觀和高速現象，引入量子力學和相對論')">顯示答案</button>
+           <div id="s5" class="strategy">
+               <strong>解題策略：</strong>
+               比較兩者的研究對象、理論特點和方法。
+           </div>
+           <p id="f5"></p>
+       </div>
+
+       <div class="navigation-buttons">
+           <a href="Lesson2.html" class="nav-btn">
+               <span>&uarr;</span> 上一單元:1-2 國際單位制
+           </a>
+           <a href="https://guidephy.github.io/guidephy/PhysicsForGSAT/CH3/Lesson1.html" class="nav-btn">
+               <span>&rarr;</span> 第三章:物質的組成與交互作用
+           </a>
+       </div>    
+   </div>
+
+   <script>
+        // 切換解題策略顯示/隱藏
+        function toggleStrategy(id) {
+            const strategyDiv = document.getElementById(id);
+            if (strategyDiv.style.display === "none" || strategyDiv.style.display === "") {
+                strategyDiv.style.display = "block";
+            } else {
+                strategyDiv.style.display = "none";
+            }
+        }
+
+        // 通用函數 - 顯示答案
+        function toggleAnswer(id, correctAnswer) {
+            const feedback = document.getElementById(id);
+            if (feedback.style.display === "none" || feedback.style.display === "") {
+                feedback.textContent = "正確答案是：" + correctAnswer + "。";
+                feedback.className = "";
+                feedback.style.display = "block";
+            } else {
+                feedback.style.display = "none";
+            }
+        }
+
+        // 以下是各個問題的檢查函數
+
+        // 問題 1
+        function checkQ1() {
+            const answer = document.getElementById("q1").value.trim();
+            const feedback = document.getElementById("f1");
+            if ((answer.includes("力學") && answer.includes("熱學") && answer.includes("電磁學") && answer.includes("光學")) &&
+                (answer.includes("牛頓") && (answer.includes("焦耳") || answer.includes("朱爾")) && (answer.includes("馬克士威") || answer.includes("麥克斯韋")))) {
+                feedback.textContent = "正確！您列出了主要領域和科學家。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請列出古典物理的主要領域和三位科學家。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 2
+        function checkQ2() {
+            const answer = document.getElementById("q2").value.trim();
+            const feedback = document.getElementById("f2");
+            if ((answer.includes("巨觀") || answer.includes("肉眼可見")) &&
+                (answer.includes("決定論") || answer.includes("預測未來")) ||
+                (answer.includes("實驗驗證") || answer.includes("實驗觀測")) ||
+                (answer.includes("數學") || answer.includes("微積分"))) {
+                feedback.textContent = "很好！您正確地描述了古典物理的特色。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請簡述古典物理的兩個特色。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 3
+        function checkQ3() {
+            const answer = document.getElementById("q3").value.trim();
+            const feedback = document.getElementById("f3");
+            if ((answer.includes("黑體輻射") || answer.includes("光電效應") || answer.includes("邁克生-莫雷")) &&
+                answer.length > 20) {
+                feedback.textContent = "正確！古典物理在這些現象的解釋上遇到了困難。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請舉出兩個古典物理無法解釋的現象。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 4
+        function checkQ4() {
+            const answer = document.getElementById("q4").value.trim();
+            const feedback = document.getElementById("f4");
+            if (answer.includes("量子力學") && answer.includes("相對論")) {
+                feedback.textContent = "正確！近代物理的兩大基石是量子力學和相對論。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不正確，請再思考一下近代物理的兩大基石是什麼。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 5
+        function checkQ5() {
+            const answer = document.getElementById("q5").value.trim();
+            const feedback = document.getElementById("f5");
+            if ((answer.includes("古典物理") && answer.includes("巨觀") && (answer.includes("決定論") || answer.includes("預測"))) &&
+                (answer.includes("近代物理") && (answer.includes("微觀") || answer.includes("高速")) && (answer.includes("量子力學") || answer.includes("相對論")))) {
+                feedback.textContent = "很好！您正確地比較了古典物理和近代物理的主要區別。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請簡述古典物理和近代物理的主要區別。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+    </script>
+</body>
+</html>
+
