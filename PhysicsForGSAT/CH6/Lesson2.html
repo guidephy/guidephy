@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CH6 量子現象</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        h1 {
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        ul, ol {
+            margin-left: 20px;
+        }
+        .highlight {
+            background-color: #e8f5e9;
+            padding: 10px;
+            border-left: 4px solid #4CAF50;
+            margin: 10px 0;
+        }
+        .question {
+            background-color: #fff3cd;
+            padding: 10px;
+            border-left: 4px solid #ffc107;
+            margin: 10px 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        textarea {
+            width: 100%;
+            height: 50px;
+            margin: 10px 0;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            resize: vertical;
+            padding: 5px;
+        }
+        #feedback {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+        code {
+            background-color: #e8f5e9;
+            padding: 2px 4px;
+            font-size: 90%;
+        }
+        .strategy {
+            display: none;
+            background-color: #e0f7fa;
+            padding: 10px;
+            border-left: 4px solid #00acc1;
+            margin-top: 10px;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            padding: 10px 0;
+            background-color: #f0f0f0;
+            border-top: 1px solid #ddd;
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 15px;
+            background: linear-gradient(45deg, #4caf50, #81c784);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: transform 0.3s, background-color 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-btn span {
+            font-size: 16px;
+            margin-right: 5px;
+        }
+
+        .nav-btn:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>6-2 光電效應</h1>
+
+        <!-- 6.2.1 光電效應 -->
+        <h2>6.2.1 光電效應</h2>
+        <p>當光照射在金屬表面時，可能會使金屬內部的電子吸收光能而脫離金屬表面，這種現象稱為<strong>光電效應</strong>。被釋放出的電子稱為<strong>光電子</strong>。</p>
+
+        <p>光電效應的主要特性：</p>
+        <ol>
+            <li><strong>存在底限頻率：</strong>只有當入射光的頻率高於某一特定值（底限頻率）時，才會產生光電子。低於此頻率，無論光的強度多大，都不會有電子逸出。</li>
+            <li><strong>即時性：</strong>一旦有合適頻率的光照射，光電子幾乎立即被釋放，沒有可察覺的時間延遲。</li>
+            <li><strong>光電子的動能與頻率相關：</strong>光電子的最大動能隨入射光的頻率增加而增加，與光的強度無關。</li>
+            <li><strong>光電流與光強度成正比：</strong>在頻率足夠高的情況下，釋放出的光電子數量（即光電流）與入射光的強度成正比。</li>
+        </ol>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 1：</strong>  
+            為什麼在光電效應中，低於底限頻率的光無法釋放光電子？  
+            <textarea id="q1"></textarea>
+            <button class="btn" onclick="checkQ1()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s1')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f1', '因為光子的能量不足以克服金屬的逸出功，無法釋放電子')">顯示答案</button>
+            <div id="s1" class="strategy">
+                <strong>解題策略：</strong>
+                考慮光子的能量與頻率的關係，以及電子逸出所需的最小能量（逸出功）。
+            </div>
+            <p id="f1"></p>
+        </div>
+
+        <!-- 6.2.2 光量子論 -->
+        <h2>6.2.2 光量子論</h2>
+        <p>古典電磁理論無法解釋光電效應的特性，例如底限頻率的存在和光電子動能與光強度無關等問題。為了解釋這些現象，<strong>愛因斯坦</strong>於 1905 年提出了<strong>光量子論</strong>。</p>
+
+        <p>主要內容：</p>
+        <ul>
+            <li>光是由一個個能量為 E = h × f 的光量子（光子）組成，h 為普朗克常數，f 為光的頻率。</li>
+            <li>光電子的釋放是由單個光子與電子的相互作用完成的。</li>
+            <li>只有當光子的能量大於金屬的逸出功時，電子才能被釋放出來。</li>
+        </ul>
+
+        <div class="highlight">
+            <strong>光電效應方程式：</strong> K<sub>max</sub> = h × f - W
+            <ul>
+                <li>K<sub>max</sub>：光電子的最大動能，單位為焦耳 (J)</li>
+                <li>h：普朗克常數，約為 6.626 × 10⁻³⁴ J·s</li>
+                <li>f：入射光的頻率，單位為赫茲 (Hz)</li>
+                <li>W：金屬的逸出功，單位為焦耳 (J)</li>
+            </ul>
+        </div>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 2：</strong>  
+            根據光量子論，為什麼光電子的最大動能與光強度無關？  
+            <textarea id="q2"></textarea>
+            <button class="btn" onclick="checkQ2()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s2')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f2', '因為光電子的動能取決於單個光子的能量（頻率），而光強度影響的是光子數量')">顯示答案</button>
+            <div id="s2" class="strategy">
+                <strong>解題策略：</strong>
+                思考光強度與光子數量的關係，以及單個光子能量對電子動能的影響。
+            </div>
+            <p id="f2"></p>
+        </div>
+
+        <div class="question">
+            <strong>問題 3：</strong>  
+            計算頻率為 1 × 10<sup>15</sup> Hz 的光子，其能量為多少焦耳？（取 h = 6.626 × 10⁻³⁴ J·s）  
+            <textarea id="q3"></textarea>
+            <button class="btn" onclick="checkQ3()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s3')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f3', '6.626 × 10⁻¹⁹ J')">顯示答案</button>
+            <div id="s3" class="strategy">
+                <strong>解題策略：</strong>
+                使用 E = h × f，將 h 和 f 的數值代入計算。
+            </div>
+            <p id="f3"></p>
+        </div>
+
+        <!-- 6.2.3 光電效應的應用 -->
+        <h2>6.2.3 光電效應的應用</h2>
+        <p>光電效應在現代科技中有廣泛的應用，以下是幾個常見的例子：</p>
+        <ul>
+            <li><strong>太陽能電池：</strong>利用光電效應將光能轉換為電能，是清潔能源的重要來源。</li>
+            <li><strong>感光元件：</strong>數位相機和攝影機中的感光元件（如 CCD、CMOS）利用光電效應將光信號轉換為電信號。</li>
+            <li><strong>自動門感應器：</strong>利用光電效應檢測有人經過，控制自動門的開啟和關閉。</li>
+            <li><strong>光電倍增管：</strong>在粒子物理實驗中，用於檢測微弱的光信號，放大電子訊號。</li>
+        </ul>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 4：</strong>  
+            為什麼太陽能電池能夠將光能轉換為電能？  
+            <textarea id="q4"></textarea>
+            <button class="btn" onclick="checkQ4()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s4')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f4', '因為光電效應使光子釋放電子，產生電流，實現能量轉換')">顯示答案</button>
+            <div id="s4" class="strategy">
+                <strong>解題策略：</strong>
+                回憶光電效應的機制，考慮電子的釋放如何形成電流。
+            </div>
+            <p id="f4"></p>
+        </div>
+
+        <div class="question">
+            <strong>問題 5：</strong>  
+            在數位相機中，感光元件如何利用光電效應進行成像？  
+            <textarea id="q5"></textarea>
+            <button class="btn" onclick="checkQ5()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s5')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f5', '光子照射感光元件釋放電子，形成電信號，再轉換成影像')">顯示答案</button>
+            <div id="s5" class="strategy">
+                <strong>解題策略：</strong>
+                思考光電效應如何將光信號轉變為電信號，進而形成影像。
+            </div>
+            <p id="f5"></p>
+        </div>
+
+        <div class="navigation-buttons">
+            <a href="Lesson1.html" class="nav-btn">
+                <span>&uarr;</span> 上一單元:6-1 量子論的誕生
+            </a>
+            <a href="Lesson3.html" class="nav-btn">
+                <span>&darr;</span> 下一單元:6-3 物質的波動性
+            </a>
+        </div>    
+    </div>
+
+    <script>
+        // 切換解題策略顯示/隱藏
+        function toggleStrategy(id) {
+            const strategyDiv = document.getElementById(id);
+            if (strategyDiv.style.display === "none" || strategyDiv.style.display === "") {
+                strategyDiv.style.display = "block";
+            } else {
+                strategyDiv.style.display = "none";
+            }
+        }
+
+        // 通用函數 - 顯示答案
+        function toggleAnswer(id, correctAnswer) {
+            const feedback = document.getElementById(id);
+            if (feedback.style.display === "none" || feedback.style.display === "") {
+                feedback.textContent = "正確答案是：" + correctAnswer + "。";
+                feedback.className = "";
+                feedback.style.display = "block";
+            } else {
+                feedback.style.display = "none";
+            }
+        }
+
+        // 問題 1
+        function checkQ1() {
+            const answer = document.getElementById("q1").value.trim();
+            const feedback = document.getElementById("f1");
+            if (answer.includes("光子") && answer.includes("能量不足") && (answer.includes("逸出功") || answer.includes("克服金屬束縛"))) {
+                feedback.textContent = "正確！光子的能量不足以克服逸出功。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請解釋光子能量與逸出功的關係。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 2
+        function checkQ2() {
+            const answer = document.getElementById("q2").value.trim();
+            const feedback = document.getElementById("f2");
+            if (answer.includes("單個光子") && answer.includes("能量") && (answer.includes("光強度影響光子數量") || answer.includes("與光強度無關"))) {
+                feedback.textContent = "正確！因為光電子的動能取決於單個光子的能量。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請說明光強度與光子數量的關係。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 3
+        function checkQ3() {
+            const answer = document.getElementById("q3").value.trim();
+            const correctAnswer = (6.626e-34 * 1e15).toExponential(3);
+            const feedback = document.getElementById("f3");
+            if (answer.includes("6.626e-19") || answer.includes("6.626 × 10⁻¹⁹") || answer.includes("6.626e-19")) {
+                feedback.textContent = "正確！光子的能量為 6.626 × 10⁻¹⁹ J。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不正確，請再計算一次。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 4
+        function checkQ4() {
+            const answer = document.getElementById("q4").value.trim();
+            const feedback = document.getElementById("f4");
+            if ((answer.includes("光電效應") || answer.includes("光子釋放電子")) && (answer.includes("電流") || answer.includes("能量轉換"))) {
+                feedback.textContent = "正確！利用光電效應將光能轉換為電能。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請說明光電效應在能量轉換中的作用。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 5
+        function checkQ5() {
+            const answer = document.getElementById("q5").value.trim();
+            const feedback = document.getElementById("f5");
+            if ((answer.includes("感光元件") || answer.includes("光電效應")) && (answer.includes("光信號轉換為電信號") || answer.includes("形成影像"))) {
+                feedback.textContent = "正確！感光元件利用光電效應將光信號轉換為電信號。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請說明感光元件如何利用光電效應成像。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+    </script>
+</body>
+</html>

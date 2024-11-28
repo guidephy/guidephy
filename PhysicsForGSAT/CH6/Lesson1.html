@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CH6 量子現象</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        h1 {
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        ul, ol {
+            margin-left: 20px;
+        }
+        .highlight {
+            background-color: #e8f5e9;
+            padding: 10px;
+            border-left: 4px solid #4CAF50;
+            margin: 10px 0;
+        }
+        .question {
+            background-color: #fff3cd;
+            padding: 10px;
+            border-left: 4px solid #ffc107;
+            margin: 10px 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        textarea {
+            width: 100%;
+            height: 50px;
+            margin: 10px 0;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            resize: vertical;
+            padding: 5px;
+        }
+        #feedback {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+        code {
+            background-color: #e8f5e9;
+            padding: 2px 4px;
+            font-size: 90%;
+        }
+        .strategy {
+            display: none;
+            background-color: #e0f7fa;
+            padding: 10px;
+            border-left: 4px solid #00acc1;
+            margin-top: 10px;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            padding: 10px 0;
+            background-color: #f0f0f0;
+            border-top: 1px solid #ddd;
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 15px;
+            background: linear-gradient(45deg, #4caf50, #81c784);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: transform 0.3s, background-color 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-btn span {
+            font-size: 16px;
+            margin-right: 5px;
+        }
+
+        .nav-btn:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>6-1 量子論的誕生</h1>
+
+        <!-- 6.1.1 熱輻射 -->
+        <h2>6.1.1 熱輻射</h2>
+        <p>所有溫度高於絕對零度的物體都會發射電磁波，這種由物體內部分子熱運動產生的電磁輻射稱為<strong>熱輻射</strong>。</p>
+
+        <p>熱輻射的特性：</p>
+        <ul>
+            <li>輻射能量隨溫度升高而增加。</li>
+            <li>不同溫度下，輻射的波長和強度分佈不同。</li>
+            <li>高溫物體輻射的電磁波波長較短（如紅外線、可見光）。</li>
+        </ul>
+
+        <p>19 世紀末，科學家觀察到黑體輻射的實驗結果無法用古典物理理論解釋，這被稱為<strong>紫外災難</strong>。</p>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 1：</strong>  
+            為什麼熱輻射的理論解釋在 19 世紀末遇到了困難？  
+            <textarea id="q1"></textarea>
+            <button class="btn" onclick="checkQ1()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s1')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f1', '因為古典物理無法解釋黑體輻射實驗結果，預測出無限能量，出現紫外災難')">顯示答案</button>
+            <div id="s1" class="strategy">
+                <strong>解題策略：</strong>
+                考慮古典理論對高頻輻射的預測與實驗結果的差異。
+            </div>
+            <p id="f1"></p>
+        </div>
+
+        <!-- 6.1.2 能量量子化 -->
+        <h2>6.1.2 能量量子化</h2>
+        <p>為了解決熱輻射問題，<strong>普朗克</strong>於 1900 年提出了能量量子化的概念，假設物質在吸收或發射能量時不是連續的，而是以最小能量單位（能量量子）的整數倍進行。</p>
+
+        <div class="highlight">
+            <strong>普朗克公式：</strong> E = h × ν
+            <ul>
+                <li>E：單個能量量子（光子的能量），單位為焦耳 (J)</li>
+                <li>h：普朗克常數，約為 6.626 × 10⁻³⁴ J·s</li>
+                <li>ν（希臘字母 nu）：輻射的頻率，單位為赫茲 (Hz)</li>
+            </ul>
+        </div>
+
+        <p>能量量子化的意義：</p>
+        <ul>
+            <li>能量以離散的最小單位存在，不能被無限地分割。</li>
+            <li>解釋了黑體輻射的能量分佈，與實驗結果相符。</li>
+            <li>開啟了量子物理學的大門，對現代物理發展具有重大意義。</li>
+        </ul>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 2：</strong>  
+            普朗克提出的能量量子化概念是為了解決什麼問題？  
+            <textarea id="q2"></textarea>
+            <button class="btn" onclick="checkQ2()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s2')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f2', '為了解釋黑體輻射現象，避免紫外災難')">顯示答案</button>
+            <div id="s2" class="strategy">
+                <strong>解題策略：</strong>
+                思考能量量子化如何修正古典理論對高頻輻射的預測。
+            </div>
+            <p id="f2"></p>
+        </div>
+
+        <div class="question">
+            <strong>問題 3：</strong>  
+            計算頻率為 5 × 10¹⁴ Hz 的光子的能量。（取 h = 6.626 × 10⁻³⁴ J·s）  
+            <textarea id="q3"></textarea>
+            <button class="btn" onclick="checkQ3()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s3')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f3', '3.313 × 10⁻¹⁹ J')">顯示答案</button>
+            <div id="s3" class="strategy">
+                <strong>解題策略：</strong>
+                使用普朗克公式 E = h × ν，代入 h 和 ν 的值進行計算。
+            </div>
+            <p id="f3"></p>
+        </div>
+
+        <!-- 6.1.3 古典物理與近代物理：連續與不連續 -->
+        <h2>6.1.3 古典物理與近代物理：連續與不連續</h2>
+        <p>古典物理學認為物理量是連續可分的，例如能量可以無限細分。然而，量子論的誕生顯示出物理量在微觀尺度上是離散的，即<strong>量子化</strong>。</p>
+
+        <p>連續與不連續的對比：</p>
+        <ul>
+            <li><strong>古典物理：</strong>能量、電荷等物理量連續變化。</li>
+            <li><strong>近代物理：</strong>能量、電荷等物理量以最小單位存在，不可再分。</li>
+        </ul>
+
+        <p>量子論的影響：</p>
+        <ul>
+            <li>解釋了許多古典物理無法解釋的現象，如光電效應、原子光譜等。</li>
+            <li>促進了現代科技的發展，如半導體、雷射等應用。</li>
+        </ul>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 4：</strong>  
+            古典物理與近代物理在能量觀念上有何主要差異？  
+            <textarea id="q4"></textarea>
+            <button class="btn" onclick="checkQ4()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s4')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f4', '古典物理認為能量連續可分，近代物理認為能量是量子化的，不連續')">顯示答案</button>
+            <div id="s4" class="strategy">
+                <strong>解題策略：</strong>
+                比較兩種理論對能量是否可以無限細分的觀點。
+            </div>
+            <p id="f4"></p>
+        </div>
+
+        <div class="question">
+            <strong>問題 5：</strong>  
+            量子論的誕生對現代科技有何重要影響？  
+            <textarea id="q5"></textarea>
+            <button class="btn" onclick="checkQ5()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s5')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f5', '促進了半導體、雷射等科技的發展，解釋了微觀現象')">顯示答案</button>
+            <div id="s5" class="strategy">
+                <strong>解題策略：</strong>
+                思考量子論在電子、光學等領域的應用。
+            </div>
+            <p id="f5"></p>
+        </div>
+
+        <div class="navigation-buttons">
+            
+            <a href="Lesson2.html" class="nav-btn">
+                <span>&darr;</span> 下一單元:6-2 光電效應
+            </a>
+        </div>    
+    </div>
+
+    <script>
+        // 切換解題策略顯示/隱藏
+        function toggleStrategy(id) {
+            const strategyDiv = document.getElementById(id);
+            if (strategyDiv.style.display === "none" || strategyDiv.style.display === "") {
+                strategyDiv.style.display = "block";
+            } else {
+                strategyDiv.style.display = "none";
+            }
+        }
+
+        // 通用函數 - 顯示答案
+        function toggleAnswer(id, correctAnswer) {
+            const feedback = document.getElementById(id);
+            if (feedback.style.display === "none" || feedback.style.display === "") {
+                feedback.textContent = "正確答案是：" + correctAnswer + "。";
+                feedback.className = "";
+                feedback.style.display = "block";
+            } else {
+                feedback.style.display = "none";
+            }
+        }
+
+        // 問題 1
+        function checkQ1() {
+            const answer = document.getElementById("q1").value.trim();
+            const feedback = document.getElementById("f1");
+            if (answer.includes("古典物理") && (answer.includes("無法解釋") || answer.includes("紫外災難"))) {
+                feedback.textContent = "正確！古典理論無法解釋熱輻射，出現紫外災難。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請說明古典理論的局限。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 2
+        function checkQ2() {
+            const answer = document.getElementById("q2").value.trim();
+            const feedback = document.getElementById("f2");
+            if ((answer.includes("黑體輻射") || answer.includes("熱輻射")) && (answer.includes("紫外災難") || answer.includes("解釋"))) {
+                feedback.textContent = "正確！為了解釋黑體輻射問題。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請指出能量量子化的目的。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 3
+        function checkQ3() {
+            const answer = document.getElementById("q3").value.trim();
+            const correctAnswer = (6.626e-34 * 5e14).toExponential(3);
+            const feedback = document.getElementById("f3");
+            if (answer.includes("3.313e-19") || answer.includes("3.313 × 10⁻¹⁹") || answer.includes("3.313e-19")) {
+                feedback.textContent = "正確！光子的能量為 3.313 × 10⁻¹⁹ J。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不正確，請再計算一次。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 4
+        function checkQ4() {
+            const answer = document.getElementById("q4").value.trim();
+            const feedback = document.getElementById("f4");
+            if (answer.includes("連續") && answer.includes("不連續") && answer.includes("量子化")) {
+                feedback.textContent = "正確！古典物理認為能量連續，近代物理認為能量量子化。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請比較兩者對能量的觀點。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 5
+        function checkQ5() {
+            const answer = document.getElementById("q5").value.trim();
+            const feedback = document.getElementById("f5");
+            if ((answer.includes("半導體") || answer.includes("雷射") || answer.includes("科技")) && (answer.includes("發展") || answer.includes("應用"))) {
+                feedback.textContent = "正確！量子論促進了現代科技的發展。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請說明量子論對科技的影響。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+    </script>
+</body>
+</html>
+
+
+
+
+

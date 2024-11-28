@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CH6 量子現象</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        h1 {
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        ul, ol {
+            margin-left: 20px;
+        }
+        .highlight {
+            background-color: #e8f5e9;
+            padding: 10px;
+            border-left: 4px solid #4CAF50;
+            margin: 10px 0;
+        }
+        .question {
+            background-color: #fff3cd;
+            padding: 10px;
+            border-left: 4px solid #ffc107;
+            margin: 10px 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        textarea {
+            width: 100%;
+            height: 50px;
+            margin: 10px 0;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            resize: vertical;
+            padding: 5px;
+        }
+        #feedback {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+        code {
+            background-color: #e8f5e9;
+            padding: 2px 4px;
+            font-size: 90%;
+        }
+        .strategy {
+            display: none;
+            background-color: #e0f7fa;
+            padding: 10px;
+            border-left: 4px solid #00acc1;
+            margin-top: 10px;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            padding: 10px 0;
+            background-color: #f0f0f0;
+            border-top: 1px solid #ddd;
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 15px;
+            background: linear-gradient(45deg, #4caf50, #81c784);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: transform 0.3s, background-color 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-btn span {
+            font-size: 16px;
+            margin-right: 5px;
+        }
+
+        .nav-btn:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>6-3 物質的波動性</h1>
+
+        <!-- 6.3.1 物質波 -->
+        <h2>6.3.1 物質波</h2>
+        <p>在 1924 年，法國物理學家<strong>德布羅意（Louis de Broglie）</strong>提出了物質波的概念，主張所有物質都具有波動性，不僅僅是光子，連帶質量的粒子如電子、質子甚至更大的物體都具有波動性。</p>
+
+        <div class="highlight">
+            <strong>德布羅意波長公式：</strong> λ = h / (m × v)
+            <ul>
+                <li>λ（lambda）：物質波的波長，單位為公尺 (m)</li>
+                <li>h：普朗克常數，約為 6.626 × 10⁻³⁴ J·s</li>
+                <li>m：粒子的質量，單位為公斤 (kg)</li>
+                <li>v：粒子的速度，單位為公尺/秒 (m/s)</li>
+            </ul>
+        </div>
+
+        <p>物質波的本質：</p>
+        <ul>
+            <li>物質波不是像水波一樣的物理波，而是描述粒子在空間中存在機率的波動函數。</li>
+            <li>在量子力學中，物質波用於描述粒子的量子狀態，其絕對值的平方代表粒子出現在某位置的機率。</li>
+        </ul>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 1：</strong>  
+            根據德布羅意的理論，質量越大的物體，其波長會如何變化？  
+            <textarea id="q1"></textarea>
+            <button class="btn" onclick="checkQ1()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s1')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f1', '波長變短，因為波長與質量成反比')">顯示答案</button>
+            <div id="s1" class="strategy">
+                <strong>解題策略：</strong>
+                查看德布羅意波長公式，考慮質量 m 與波長 λ 的關係。
+            </div>
+            <p id="f1"></p>
+        </div>
+
+        <div class="question">
+            <strong>問題 2：</strong>  
+            計算速度為 1 × 10⁶ m/s，質量為 9.11 × 10⁻³¹ kg 的電子的德布羅意波長。（取 h = 6.626 × 10⁻³⁴ J·s）  
+            <textarea id="q2"></textarea>
+            <button class="btn" onclick="checkQ2()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s2')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f2', '約為 7.27 × 10⁻¹⁰ m')">顯示答案</button>
+            <div id="s2" class="strategy">
+                <strong>解題策略：</strong>
+                使用 λ = h / (m × v)，將已知數值代入計算。
+            </div>
+            <p id="f2"></p>
+        </div>
+
+        <!-- 6.3.2 物質波的實驗證據 -->
+        <h2>6.3.2 物質波的實驗證據</h2>
+        <p>德布羅意的理論最初只是一種假設，後來通過實驗得到了證實：</p>
+
+        <h3>1. 戴維森-革末實驗</h3>
+        <p>1927 年，<strong>戴維森（Clinton Davisson）</strong>和<strong>革末（Lester Germer）</strong>利用鎳晶體對電子進行散射實驗，發現電子束在鎳晶體上產生了繞射圖樣，這是波動行為的證據。</p>
+
+        <h3>2. 湯姆森的電子繞射實驗</h3>
+        <p>同樣在 1927 年，<strong>湯姆森（George Paget Thomson）</strong>將電子束通過薄的金屬箔（如鋁箔），也觀察到了電子的繞射圖樣，進一步證實了電子具有波動性。</p>
+
+        <h3>3. 電子雙狹縫干涉實驗</h3>
+        <p>在這個實驗中，電子束通過雙狹縫後，在螢光屏上形成干涉條紋，這是典型的波動行為。但當電子一個一個通過狹縫時，仍然會最終形成干涉條紋，顯示出粒子同時具有波動性和粒子性。</p>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 3：</strong>  
+            電子繞射實驗如何證實了物質波的存在？  
+            <textarea id="q3"></textarea>
+            <button class="btn" onclick="checkQ3()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s3')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f3', '因為繞射圖樣是波動特性，電子產生繞射證明具有波動性')">顯示答案</button>
+            <div id="s3" class="strategy">
+                <strong>解題策略：</strong>
+                回憶波動行為的特徵，繞射是波動特有的現象。
+            </div>
+            <p id="f3"></p>
+        </div>
+
+        <div class="question">
+            <strong>問題 4：</strong>  
+            在雙狹縫實驗中，電子一個一個地通過狹縫，最終為何會形成干涉條紋？  
+            <textarea id="q4"></textarea>
+            <button class="btn" onclick="checkQ4()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s4')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f4', '因為每個電子都具有波動性，概率上呈現干涉效應')">顯示答案</button>
+            <div id="s4" class="strategy">
+                <strong>解題策略：</strong>
+                思考單個電子的波動性如何影響整體的干涉圖樣。
+            </div>
+            <p id="f4"></p>
+        </div>
+
+        <!-- 6.3.3 波粒二象性 -->
+        <h2>6.3.3 波粒二象性</h2>
+        <p>量子力學揭示，所有微觀粒子（如電子、光子）都具有<strong>波粒二象性</strong>，即在不同實驗條件下，會呈現出波動性或粒子性。</p>
+
+        <p>波粒二象性的要點：</p>
+        <ul>
+            <li><strong>粒子性：</strong>在測量粒子位置、動量等物理量時，粒子的行為類似於經典粒子。</li>
+            <li><strong>波動性：</strong>在干涉、繞射等實驗中，粒子表現出波動特性。</li>
+            <li>粒子不會同時表現出波動性和粒子性，這取決於觀測方式。</li>
+        </ul>
+
+        <p>波粒二象性的詮釋：</p>
+        <ul>
+            <li>物質波（如電子波）是概率波，其絕對值平方代表粒子在某位置出現的概率。</li>
+            <li>量子力學中的波動方程（如薛定諤方程）用於描述粒子的概率分佈。</li>
+            <li>觀測行為會影響粒子的狀態，這是量子力學的核心概念之一。</li>
+        </ul>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 5：</strong>  
+            什麼是波粒二象性？  
+            <textarea id="q5"></textarea>
+            <button class="btn" onclick="checkQ5()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s5')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f5', '微觀粒子同時具有波動性和粒子性，依觀測方式呈現不同特性')">顯示答案</button>
+            <div id="s5" class="strategy">
+                <strong>解題策略：</strong>
+                簡要說明波粒二象性的概念，強調雙重特性。
+            </div>
+            <p id="f5"></p>
+        </div>
+
+        <div class="question">
+            <strong>問題 6：</strong>  
+            為何光和物質不會同時表現出波動性和粒子性？  
+            <textarea id="q6"></textarea>
+            <button class="btn" onclick="checkQ6()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s6')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f6', '因為觀測方式決定了粒子表現出的特性，只能觀測到其中一種')">顯示答案</button>
+            <div id="s6" class="strategy">
+                <strong>解題策略：</strong>
+                考慮量子力學中的測不準原理和觀測對象的互補性。
+            </div>
+            <p id="f6"></p>
+        </div>
+
+        <div class="navigation-buttons">
+            <a href="Lesson2.html" class="nav-btn">
+                <span>&uarr;</span> 上一單元:6-2 光電效應
+            </a>
+            <a href="Lesson4.html" class="nav-btn">
+                <span>&darr;</span> 下一單元:6-4 光譜與氫原子模型
+            </a>
+        </div>    
+    </div>
+
+    <script>
+        // 切換解題策略顯示/隱藏
+        function toggleStrategy(id) {
+            const strategyDiv = document.getElementById(id);
+            if (strategyDiv.style.display === "none" || strategyDiv.style.display === "") {
+                strategyDiv.style.display = "block";
+            } else {
+                strategyDiv.style.display = "none";
+            }
+        }
+
+        // 通用函數 - 顯示答案
+        function toggleAnswer(id, correctAnswer) {
+            const feedback = document.getElementById(id);
+            if (feedback.style.display === "none" || feedback.style.display === "") {
+                feedback.textContent = "正確答案是：" + correctAnswer + "。";
+                feedback.className = "";
+                feedback.style.display = "block";
+            } else {
+                feedback.style.display = "none";
+            }
+        }
+
+        // 問題 1
+        function checkQ1() {
+            const answer = document.getElementById("q1").value.trim();
+            const feedback = document.getElementById("f1");
+            if (answer.includes("變短") || (answer.includes("質量越大") && answer.includes("波長越小"))) {
+                feedback.textContent = "正確！質量越大，波長越短。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請說明質量與波長的反比關係。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 2
+        function checkQ2() {
+            const answer = document.getElementById("q2").value.trim();
+            const correctAnswer = (6.626e-34 / (9.11e-31 * 1e6)).toExponential(3);
+            const feedback = document.getElementById("f2");
+            if (answer.includes("7.27e-10") || answer.includes("7.27 × 10⁻¹⁰") || answer.includes("7.27e-10")) {
+                feedback.textContent = "正確！電子的波長約為 7.27 × 10⁻¹⁰ m。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不正確，請再計算一次。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 3
+        function checkQ3() {
+            const answer = document.getElementById("q3").value.trim();
+            const feedback = document.getElementById("f3");
+            if (answer.includes("繞射") && (answer.includes("波動性") || answer.includes("波動特性"))) {
+                feedback.textContent = "正確！電子產生繞射證明具有波動性。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請解釋繞射與波動性的關係。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 4
+        function checkQ4() {
+            const answer = document.getElementById("q4").value.trim();
+            const feedback = document.getElementById("f4");
+            if ((answer.includes("波動性") || answer.includes("概率")) && (answer.includes("干涉") || answer.includes("干涉條紋"))) {
+                feedback.textContent = "正確！電子的波動性導致概率上的干涉效應。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請說明電子的波動性如何導致干涉條紋。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 5
+        function checkQ5() {
+            const answer = document.getElementById("q5").value.trim();
+            const feedback = document.getElementById("f5");
+            if ((answer.includes("粒子性") && answer.includes("波動性")) && (answer.includes("同時具有") || answer.includes("二象性"))) {
+                feedback.textContent = "正確！微觀粒子具有波粒二象性。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請描述波粒二象性的概念。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 6
+        function checkQ6() {
+            const answer = document.getElementById("q6").value.trim();
+            const feedback = document.getElementById("f6");
+            if ((answer.includes("觀測方式") || answer.includes("測量")) && (answer.includes("只能觀測到一種") || answer.includes("互補性"))) {
+                feedback.textContent = "正確！觀測方式決定了粒子表現出的特性。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請解釋觀測對粒子特性的影響。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+    </script>
+</body>
+</html>

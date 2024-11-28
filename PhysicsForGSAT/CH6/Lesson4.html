@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CH6 量子現象</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        h1 {
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        ul, ol {
+            margin-left: 20px;
+        }
+        .highlight {
+            background-color: #e8f5e9;
+            padding: 10px;
+            border-left: 4px solid #4CAF50;
+            margin: 10px 0;
+        }
+        .question {
+            background-color: #fff3cd;
+            padding: 10px;
+            border-left: 4px solid #ffc107;
+            margin: 10px 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        textarea {
+            width: 100%;
+            height: 50px;
+            margin: 10px 0;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            resize: vertical;
+            padding: 5px;
+        }
+        #feedback {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+        code {
+            background-color: #e8f5e9;
+            padding: 2px 4px;
+            font-size: 90%;
+        }
+        .strategy {
+            display: none;
+            background-color: #e0f7fa;
+            padding: 10px;
+            border-left: 4px solid #00acc1;
+            margin-top: 10px;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            padding: 10px 0;
+            background-color: #f0f0f0;
+            border-top: 1px solid #ddd;
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 15px;
+            background: linear-gradient(45deg, #4caf50, #81c784);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: transform 0.3s, background-color 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-btn span {
+            font-size: 16px;
+            margin-right: 5px;
+        }
+
+        .nav-btn:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>6-4 原子光譜</h1>
+
+        <!-- 6.4.1 光譜的種類 -->
+        <h2>6.4.1 光譜的種類</h2>
+        <p>光譜是指光經過色散（如經過稜鏡或光柵）後，按照波長或頻率排列形成的圖案。根據產生方式，光譜可分為三類：</p>
+
+        <h3>1. 連續光譜</h3>
+        <p>連續光譜是在光譜上呈現連續不間斷的色彩過渡，所有波長的光都有。常見於白熾燈泡發出的白光，經色散後形成紅、橙、黃、綠、藍、靛、紫連續排列的光譜。</p>
+
+        <h3>2. 發射光譜</h3>
+        <p>發射光譜是在黑色背景上出現一些明亮的線條，稱為<strong>光譜線</strong>。這些線條對應特定波長的光。當特定氣體被加熱或放電時，原子內的電子從高能階躍遷到低能階，放出特定波長的光子，形成發射光譜。</p>
+
+        <h3>3. 吸收光譜</h3>
+        <p>吸收光譜是在連續光譜的背景上出現一些暗線。當白光通過冷卻的氣體時，氣體原子吸收了特定波長的光子，電子從低能階躍遷到高能階，導致該波長的光在光譜中缺失，形成吸收光譜。</p>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 1：</strong>  
+            連續光譜與發射光譜的主要區別是什麼？  
+            <textarea id="q1"></textarea>
+            <button class="btn" onclick="checkQ1()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s1')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f1', '連續光譜是所有波長連續分佈，發射光譜只有特定波長的亮線')">顯示答案</button>
+            <div id="s1" class="strategy">
+                <strong>解題策略：</strong>
+                比較兩種光譜的形成條件和在光譜上的表現形式。
+            </div>
+            <p id="f1"></p>
+        </div>
+
+        <!-- 6.4.2 原子光譜 -->
+        <h2>6.4.2 原子光譜</h2>
+        <p>每種元素的原子都有獨特的能階結構，因此不同元素的原子在電子躍遷時，會吸收或放出特定波長的光子，形成獨特的光譜線。這些光譜線就像原子的「指紋」，可以用來辨識元素的種類。</p>
+
+        <p>應用範例：</p>
+        <ul>
+            <li><strong>元素分析：</strong>透過觀察物質的發射或吸收光譜，可以確定其化學組成。例如，在天文學中，科學家通過分析星體的光譜，了解其組成元素。</li>
+            <li><strong>太陽光譜：</strong>太陽光經色散後，發現連續光譜中存在許多暗線，稱為<strong>弗朗和斐斐線（Fraunhofer lines）</strong>，這些暗線是太陽大氣層中的元素吸收特定波長的光造成的，據此可知太陽的化學成分。</li>
+        </ul>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 2：</strong>  
+            為什麼不同元素的原子會產生不同的光譜線？  
+            <textarea id="q2"></textarea>
+            <button class="btn" onclick="checkQ2()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s2')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f2', '因為不同元素的電子能階結構不同，電子躍遷時放出或吸收的光子能量不同')">顯示答案</button>
+            <div id="s2" class="strategy">
+                <strong>解題策略：</strong>
+                考慮原子內部結構對能量吸收和釋放的影響。
+            </div>
+            <p id="f2"></p>
+        </div>
+
+        <!-- 6.4.3 波耳的氫原子模型 -->
+        <h2>6.4.3 波耳的氫原子模型</h2>
+        <p>為了解釋氫原子光譜的規律性，<strong>尼爾斯·波耳（Niels Bohr）</strong>於 1913 年提出了氫原子模型，包含兩個重要假設：</p>
+
+        <h3>1. 能階穩定態</h3>
+        <p>電子只能在特定的圓形軌道上繞原子核運動，每個軌道對應特定的能量，稱為<strong>能階</strong>。電子在這些軌道上運行時，不會放出電磁波，因此是穩定的。</p>
+
+        <h3>2. 電子躍遷與光子的吸收或發射</h3>
+        <p>電子可以吸收或放出光子，從一個能階躍遷到另一個能階：</p>
+        <ul>
+            <li><strong>吸收光子：</strong>電子吸收能量，從低能階躍遷到高能階。</li>
+            <li><strong>發射光子：</strong>電子從高能階躍遷到低能階，放出能量為 E = h × f 的光子。</li>
+        </ul>
+
+        <div class="highlight">
+            <strong>能量關係式：</strong> ΔE = E<sub>高</sub> - E<sub>低</sub> = h × f
+            <ul>
+                <li>ΔE：能階間的能量差，單位為焦耳 (J)</li>
+                <li>h：普朗克常數，約為 6.626 × 10⁻³⁴ J·s</li>
+                <li>f：光子的頻率，單位為赫茲 (Hz)</li>
+            </ul>
+        </div>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 3：</strong>  
+            根據波耳模型，為何電子在特定軌道上運行時不會輻射能量？  
+            <textarea id="q3"></textarea>
+            <button class="btn" onclick="checkQ3()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s3')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f3', '因為這些軌道是穩定能階，電子在上面運行時能量不變，不會輻射能量')">顯示答案</button>
+            <div id="s3" class="strategy">
+                <strong>解題策略：</strong>
+                回憶波耳對穩定態的定義和電子運動的特性。
+            </div>
+            <p id="f3"></p>
+        </div>
+
+        <div class="question">
+            <strong>問題 4：</strong>  
+            電子從能階 E<sub>3</sub> 躍遷到 E<sub>1</sub>，放出頻率為 f 的光子。若已知 E<sub>3</sub> - E<sub>1</sub> = 3.0 × 10⁻¹⁹ J，求光子的頻率。（取 h = 6.626 × 10⁻³⁴ J·s）  
+            <textarea id="q4"></textarea>
+            <button class="btn" onclick="checkQ4()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s4')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f4', 'f = 4.53 × 10¹⁴ Hz')">顯示答案</button>
+            <div id="s4" class="strategy">
+                <strong>解題策略：</strong>
+                使用 ΔE = h × f，解出 f = ΔE / h，將數值代入計算。
+            </div>
+            <p id="f4"></p>
+        </div>
+
+        <div class="question">
+            <strong>問題 5：</strong>  
+            為什麼氫原子的光譜是離散的，而不是連續的？  
+            <textarea id="q5"></textarea>
+            <button class="btn" onclick="checkQ5()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s5')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f5', '因為電子只能在特定能階間躍遷，放出的光子能量是離散的')">顯示答案</button>
+            <div id="s5" class="strategy">
+                <strong>解題策略：</strong>
+                考慮能階的離散性對光譜的影響。
+            </div>
+            <p id="f5"></p>
+        </div>
+
+        <div class="navigation-buttons">
+            <a href="Lesson3.html" class="nav-btn">
+                <span>&uarr;</span> 上一單元:6-3 物質的波動性
+            </a>
+           
+        </div>    
+    </div>
+
+    <script>
+        // 切換解題策略顯示/隱藏
+        function toggleStrategy(id) {
+            const strategyDiv = document.getElementById(id);
+            if (strategyDiv.style.display === "none" || strategyDiv.style.display === "") {
+                strategyDiv.style.display = "block";
+            } else {
+                strategyDiv.style.display = "none";
+            }
+        }
+
+        // 通用函數 - 顯示答案
+        function toggleAnswer(id, correctAnswer) {
+            const feedback = document.getElementById(id);
+            if (feedback.style.display === "none" || feedback.style.display === "") {
+                feedback.textContent = "正確答案是：" + correctAnswer + "。";
+                feedback.className = "";
+                feedback.style.display = "block";
+            } else {
+                feedback.style.display = "none";
+            }
+        }
+
+        // 問題 1
+        function checkQ1() {
+            const answer = document.getElementById("q1").value.trim();
+            const feedback = document.getElementById("f1");
+            if ((answer.includes("連續") && answer.includes("所有波長")) && (answer.includes("發射") && answer.includes("特定波長"))) {
+                feedback.textContent = "正確！連續光譜包含所有波長，發射光譜只有特定波長的亮線。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請比較兩種光譜的特性。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 2
+        function checkQ2() {
+            const answer = document.getElementById("q2").value.trim();
+            const feedback = document.getElementById("f2");
+            if ((answer.includes("能階結構") || answer.includes("電子能量")) && (answer.includes("不同") || answer.includes("特定"))) {
+                feedback.textContent = "正確！不同元素的能階結構不同，導致光譜線不同。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請說明能階結構對光譜的影響。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 3
+        function checkQ3() {
+            const answer = document.getElementById("q3").value.trim();
+            const feedback = document.getElementById("f3");
+            if (answer.includes("穩定能階") && (answer.includes("不輻射") || answer.includes("能量不變"))) {
+                feedback.textContent = "正確！電子在穩定能階上運行時能量不變，不會輻射能量。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請解釋穩定能階的特性。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 4
+        function checkQ4() {
+            const answer = document.getElementById("q4").value.trim();
+            const correctAnswer = (3.0e-19 / 6.626e-34).toExponential(3);
+            const feedback = document.getElementById("f4");
+            if (answer.includes("4.53e14") || answer.includes("4.53 × 10¹⁴") || answer.includes("4.53e14")) {
+                feedback.textContent = "正確！光子的頻率為 4.53 × 10¹⁴ Hz。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不正確，請再計算一次。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 5
+        function checkQ5() {
+            const answer = document.getElementById("q5").value.trim();
+            const feedback = document.getElementById("f5");
+            if ((answer.includes("能階") || answer.includes("電子躍遷")) && (answer.includes("離散") || answer.includes("特定能量"))) {
+                feedback.textContent = "正確！因為電子只能在離散的能階間躍遷。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請解釋能階離散性對光譜的影響。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+    </script>
+</body>
+</html>
