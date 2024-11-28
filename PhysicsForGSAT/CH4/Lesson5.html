@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CH4 電與磁的統一</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        h1 {
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        ul, ol {
+            margin-left: 20px;
+        }
+        .highlight {
+            background-color: #e8f5e9;
+            padding: 10px;
+            border-left: 4px solid #4CAF50;
+            margin: 10px 0;
+        }
+        .question {
+            background-color: #fff3cd;
+            padding: 10px;
+            border-left: 4px solid #ffc107;
+            margin: 10px 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        textarea {
+            width: 100%;
+            height: 50px;
+            margin: 10px 0;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            resize: vertical;
+            padding: 5px;
+        }
+        #feedback {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+        code {
+            background-color: #e8f5e9;
+            padding: 2px 4px;
+            font-size: 90%;
+        }
+        .strategy {
+            display: none;
+            background-color: #e0f7fa;
+            padding: 10px;
+            border-left: 4px solid #00acc1;
+            margin-top: 10px;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            padding: 10px 0;
+            background-color: #f0f0f0;
+            border-top: 1px solid #ddd;
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 15px;
+            background: linear-gradient(45deg, #4caf50, #81c784);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: transform 0.3s, background-color 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-btn span {
+            font-size: 16px;
+            margin-right: 5px;
+        }
+
+        .nav-btn:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>4-5 光波的特性</h1>
+
+        <!-- 4.5.1 光的本質 -->
+        <h2>4.5.1 光的本質</h2>
+        <p>光的本質是人類長期探討的課題，歷史上有三種主要的理論：</p>
+
+        <h3>1. 微粒說</h3>
+        <p>牛頓提出光是由微小粒子組成，稱為光子，以直線方式傳播，可解釋反射和折射現象。</p>
+
+        <h3>2. 波動說</h3>
+        <p>惠更斯認為光是波動，以波的形式傳播，可解釋反射和折射現象及干涉、繞射等現象。</p>
+
+        <h3>3. 微粒說到波動說的證據</h3>
+         <ul>
+            <li>楊氏雙狹縫干涉實驗。</li>
+            <li>菲涅耳的繞射理論。</li>
+            <li>光速在液體中較空氣中慢。</li>
+            <li>泊松亮點。</li>
+            <li>馬克士威的電磁理論。</li>
+        </ul>
+
+        <h3>3. 波粒二象性</h3>
+        <ul>
+            <li>光電效應的實驗結果無法用波動說解釋，愛因斯坦因此提出光量子論解釋。</li>
+            <li>光量子論將光視為一個個的光量子，每個光量子的能量E=hf。</li>
+            <li>愛因斯坦因此<strong>波粒二象性</strong>，即光在不同條件會呈現出波或粒子的性質。</li>
+        </ul>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 1：</strong>
+            光的微粒說和波動說有何不同？波粒二象性如何統一這兩種觀點？
+            <textarea id="q1"></textarea>
+            <button class="btn" onclick="checkQ1()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s1')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f1', '微粒說認為光是粒子，波動說認為光是波；波粒二象性統一了兩者，認為光具有雙重性質')">顯示答案</button>
+            <div id="s1" class="strategy">
+                <strong>解題策略：</strong>
+                比較兩種理論的主要觀點，理解現代物理學如何解釋光的本質。
+            </div>
+            <p id="f1"></p>
+        </div>
+
+        <!-- 4.5.2 波前 -->
+        <h2>4.5.2 波前</h2>
+        <p><strong>波前</strong>是指在同一時刻，波動所到達的所有點連成的曲線或曲面。它代表了波的傳播狀態和形狀。</p>
+
+        <p>波的前進方向總是垂直於波前，即波以垂直於波前的方向傳播。</p>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 2：</strong>
+            波前是什麼？波的傳播方向與波前有何關係？
+            <textarea id="q2"></textarea>
+            <button class="btn" onclick="checkQ2()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s2')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f2', '波前是同時刻波到達的點連成的面；波的傳播方向垂直於波前')">顯示答案</button>
+            <div id="s2" class="strategy">
+                <strong>解題策略：</strong>
+                回憶波前的定義，思考波的傳播方向與波前的幾何關係。
+            </div>
+            <p id="f2"></p>
+        </div>
+
+        <!-- 4.5.3 惠更斯原理 -->
+        <h2>4.5.3 惠更斯原理</h2>
+        <p><strong>惠更斯原理</strong>指出，波前上每一點都可視為新的點波源，發出子波（次波），這些子波向前傳播，新的波前是這些子波的包絡面。</p>
+
+        <p>此原理可用來解釋波的傳播、反射、折射、干涉和繞射等現象。</p>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 3：</strong>
+            惠更斯原理的核心概念是什麼？它如何解釋波的繞射現象？
+            <textarea id="q3"></textarea>
+            <button class="btn" onclick="checkQ3()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s3')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f3', '每個波前點都是新的波源，發出子波；這解釋了波可繞過障礙物傳播的繞射現象')">顯示答案</button>
+            <div id="s3" class="strategy">
+                <strong>解題策略：</strong>
+                理解惠更斯原理的基本原理，並應用於繞射的解釋。
+            </div>
+            <p id="f3"></p>
+        </div>
+
+        <!-- 4.5.4 光的反射 -->
+        <h2>4.5.4 光的反射</h2>
+        <p>當光從一種介質射向另一種介質的界面時，會發生反射現象。反射遵循以下定律：</p>
+
+        <ul>
+            <li><strong>反射定律：</strong>反射光線、入射光線和法線位於同一平面上。</li>
+            <li>反射角等於入射角（∠i = ∠r）。</li>
+        </ul>
+
+        <p>平面鏡成像就是光的反射應用，產生虛像，與物體等大且對稱。</p>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 4：</strong>
+            反射定律的內容是什麼？在平面鏡中，物體與像之間有何關係？
+            <textarea id="q4"></textarea>
+            <button class="btn" onclick="checkQ4()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s4')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f4', '反射角等於入射角，光線和法線同在一平面；像與物體等大、對稱、距離相等')">顯示答案</button>
+            <div id="s4" class="strategy">
+                <strong>解題策略：</strong>
+                回憶反射定律的兩個主要內容，以及平面鏡成像的特點。
+            </div>
+            <p id="f4"></p>
+        </div>
+
+        <!-- 4.5.5 光的折射 -->
+        <h2>4.5.5 光的折射</h2>
+        <p>當光斜射入不同介質時，傳播方向會在界面處發生改變，這種現象稱為<strong>折射</strong>。折射遵循以下定律：</p>
+
+        <ul>
+            <li><strong>折射定律（司乃耳定律）：</strong>入射光線、折射光線和法線位於同一平面，且入射角和折射角的正弦比值為定值，即 n = sin∠i / sin∠r。</li>
+            <li>光由光速較快的介質進入光速較慢的介質時，折射光線會偏向法線；反之則偏離法線。</li>
+        </ul>
+
+        <p><strong>折射率（n）</strong>是光在真空中的速度與在介質中的速度之比，表示介質對光的折射能力。</p>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 5：</strong>
+            什麼是折射率？當光從空氣進入水中時，會偏向還是偏離法線？
+            <textarea id="q5"></textarea>
+            <button class="btn" onclick="checkQ5()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s5')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f5', '折射率是光速之比；光會偏向法線，因為水中光速較慢')">顯示答案</button>
+            <div id="s5" class="strategy">
+                <strong>解題策略：</strong>
+                理解折射率的定義，判斷光速快慢與折射方向的關係。
+            </div>
+            <p id="f5"></p>
+        </div>
+
+        <!-- 4.5.6 光的干涉 -->
+        <h2>4.5.6 光的干涉</h2>
+        <p>當兩束相干光相遇時，會發生<strong>干涉</strong>現象，導致光強度的疊加效果：</p>
+
+        <ul>
+            <li><strong>建設性干涉：</strong>波峰與波峰重疊，振幅增大，形成亮紋。</li>
+            <li><strong>破壞性干涉：</strong>波峰與波谷重疊，振幅減小，形成暗紋。</li>
+        </ul>
+
+        <p><strong>楊氏雙狹縫實驗</strong>證明了光的波動性，通過兩個狹縫產生相干光源，在屏幕上形成明暗相間的干涉條紋。</p>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 6：</strong>
+            什麼是建設性干涉和破壞性干涉？楊氏雙狹縫實驗證明了什麼？
+            <textarea id="q6"></textarea>
+            <button class="btn" onclick="checkQ6()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s6')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f6', '建設性干涉是振幅增大；破壞性干涉是振幅減小；實驗證明了光的波動性')">顯示答案</button>
+            <div id="s6" class="strategy">
+                <strong>解題策略：</strong>
+                回憶干涉的定義和雙狹縫實驗的意義。
+            </div>
+            <p id="f6"></p>
+        </div>
+
+        <!-- 4.5.7 光的繞射 -->
+        <h2>4.5.7 光的繞射</h2>
+        <p><strong>繞射</strong>是指波在遇到障礙物或狹縫時，會繞過障礙物繼續傳播的現象。</p>
+
+        <p>在單狹縫繞射實驗中，光通過狹縫後會在屏幕上形成明暗相間的條紋，中央亮紋最寬且最亮，這是繞射的特徵。</p>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 7：</strong>
+            繞射現象是什麼？單狹縫繞射實驗中觀察到什麼現象？
+            <textarea id="q7"></textarea>
+            <button class="btn" onclick="checkQ7()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s7')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f7', '繞射是波繞過障礙物傳播；實驗中看到中央亮紋最亮，兩側有明暗條紋')">顯示答案</button>
+            <div id="s7" class="strategy">
+                <strong>解題策略：</strong>
+                描述繞射的定義，並回憶實驗觀察到的現象。
+            </div>
+            <p id="f7"></p>
+        </div>
+
+        <!-- 4.5.8 生活中的干涉與繞射 -->
+        <h2>4.5.8 生活中的干涉與繞射</h2>
+        <p>在日常生活中，我們常常能觀察到由光的干涉和繞射造成的現象：</p>
+
+        <ul>
+            <li><strong>肥皂泡的彩虹色：</strong>薄膜干涉造成的色彩斑斕。</li>
+            <li><strong>光碟片上的彩色光紋：</strong>光在光碟表面的細微溝槽繞射形成的光譜。</li>
+            <li><strong>油漬的彩色斑紋：</strong>薄油膜干涉產生的色彩變化。</li>
+            <li><strong>孔雀羽毛的鮮豔色彩：</strong>微小結構造成的光干涉和繞射效應。</li>
+        </ul>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 8：</strong>
+            為什麼肥皂泡會呈現彩虹色？這與哪種光學現象有關？
+            <textarea id="q8"></textarea>
+            <button class="btn" onclick="checkQ8()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s8')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f8', '因為薄膜干涉，光的干涉造成的色彩現象')">顯示答案</button>
+            <div id="s8" class="strategy">
+                <strong>解題策略：</strong>
+                考慮光在薄膜表面的反射和干涉效應。
+            </div>
+            <p id="f8"></p>
+        </div>
+
+        <div class="question">
+            <strong>問題 9：</strong>
+            光碟片上的彩色光紋是由什麼現象造成的？
+            <textarea id="q9"></textarea>
+            <button class="btn" onclick="checkQ9()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s9')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f9', '光的繞射，光在細微溝槽上發生繞射形成光譜')">顯示答案</button>
+            <div id="s9" class="strategy">
+                <strong>解題策略：</strong>
+                理解光在週期性結構上的繞射效應。
+            </div>
+            <p id="f9"></p>
+        </div>
+
+        <div class="navigation-buttons">
+            <a href="Lesson4.html" class="nav-btn">
+                <span>&uarr;</span> 上一單元:4-4 波的現象
+            </a>
+            <a href="Lesson6.html" class="nav-btn">
+                <span>&darr;</span> 下一單元:4-6 都卜勒效應
+            </a>
+        </div>    
+    </div>
+
+    <script>
+        // 切換解題策略顯示/隱藏
+        function toggleStrategy(id) {
+            const strategyDiv = document.getElementById(id);
+            if (strategyDiv.style.display === "none" || strategyDiv.style.display === "") {
+                strategyDiv.style.display = "block";
+            } else {
+                strategyDiv.style.display = "none";
+            }
+        }
+
+        // 通用函數 - 顯示答案
+        function toggleAnswer(id, correctAnswer) {
+            const feedback = document.getElementById(id);
+            if (feedback.style.display === "none" || feedback.style.display === "") {
+                feedback.textContent = "正確答案是：" + correctAnswer + "。";
+                feedback.className = "";
+                feedback.style.display = "block";
+            } else {
+                feedback.style.display = "none";
+            }
+        }
+
+        // 問題 1
+        function checkQ1() {
+            const answer = document.getElementById("q1").value.trim();
+            const feedback = document.getElementById("f1");
+            if ((answer.includes("微粒說") && answer.includes("粒子")) && (answer.includes("波動說") && answer.includes("波")) && (answer.includes("波粒二象性") && (answer.includes("統一") || answer.includes("雙重性質")))) {
+                feedback.textContent = "正確！微粒說認為光是粒子，波動說認為光是波；波粒二象性統一了兩者，認為光具有雙重性質。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請比較兩種理論並解釋波粒二象性。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 2
+        function checkQ2() {
+            const answer = document.getElementById("q2").value.trim();
+            const feedback = document.getElementById("f2");
+            if ((answer.includes("波前") && answer.includes("同時刻") && answer.includes("點連成的面")) && (answer.includes("傳播方向") && (answer.includes("垂直") || answer.includes("正交")) && answer.includes("波前"))) {
+                feedback.textContent = "正確！波前是同時刻波到達的點連成的面；波的傳播方向垂直於波前。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請解釋波前的定義和傳播方向的關係。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 3
+        function checkQ3() {
+            const answer = document.getElementById("q3").value.trim();
+            const feedback = document.getElementById("f3");
+            if ((answer.includes("每個波前點") || answer.includes("波前上每一點")) && (answer.includes("新的波源") || answer.includes("發出子波")) && (answer.includes("繞過障礙物") || answer.includes("繞射"))) {
+                feedback.textContent = "正確！每個波前點都是新的波源，發出子波；這解釋了波可繞過障礙物傳播的繞射現象。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請說明惠更斯原理的核心概念和如何解釋繞射。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 4
+        function checkQ4() {
+            const answer = document.getElementById("q4").value.trim();
+            const feedback = document.getElementById("f4");
+            if ((answer.includes("反射角等於入射角")) && (answer.includes("同一平面")) && (answer.includes("像與物體等大") || answer.includes("對稱") || answer.includes("距離相等"))) {
+                feedback.textContent = "正確！反射角等於入射角，光線和法線同在一平面；像與物體等大、對稱、距離相等。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請完整描述反射定律和像的特性。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 5
+        function checkQ5() {
+            const answer = document.getElementById("q5").value.trim();
+            const feedback = document.getElementById("f5");
+            if ((answer.includes("折射率") && answer.includes("光速之比")) && (answer.includes("偏向法線") || answer.includes("水中光速較慢"))) {
+                feedback.textContent = "正確！折射率是光速之比；光會偏向法線，因為水中光速較慢。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請說明折射率和光的偏折方向。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 6
+        function checkQ6() {
+            const answer = document.getElementById("q6").value.trim();
+            const feedback = document.getElementById("f6");
+            if ((answer.includes("建設性干涉") && (answer.includes("振幅增大") || answer.includes("形成亮紋"))) && (answer.includes("破壞性干涉") && (answer.includes("振幅減小") || answer.includes("形成暗紋"))) && (answer.includes("波動性") || answer.includes("光是波"))) {
+                feedback.textContent = "正確！建設性干涉是振幅增大；破壞性干涉是振幅減小；實驗證明了光的波動性。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請描述干涉類型和實驗的意義。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 7
+        function checkQ7() {
+            const answer = document.getElementById("q7").value.trim();
+            const feedback = document.getElementById("f7");
+            if ((answer.includes("繞過障礙物") || answer.includes("繞過狹縫")) && (answer.includes("中央亮紋最亮") || answer.includes("明暗條紋"))) {
+                feedback.textContent = "正確！繞射是波繞過障礙物傳播；實驗中看到中央亮紋最亮，兩側有明暗條紋。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請解釋繞射現象和實驗觀察。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 8
+        function checkQ8() {
+            const answer = document.getElementById("q8").value.trim();
+            const feedback = document.getElementById("f8");
+            if ((answer.includes("薄膜干涉") || answer.includes("光的干涉")) && (answer.includes("色彩現象") || answer.includes("彩虹色"))) {
+                feedback.textContent = "正確！因為薄膜干涉，光的干涉造成的色彩現象。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請指出原因和相關的光學現象。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 9
+        function checkQ9() {
+            const answer = document.getElementById("q9").value.trim();
+            const feedback = document.getElementById("f9");
+            if ((answer.includes("光的繞射") || answer.includes("繞射現象")) && (answer.includes("細微溝槽") || answer.includes("光譜"))) {
+                feedback.textContent = "正確！光的繞射，光在細微溝槽上發生繞射形成光譜。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請解釋現象和相關的光學原理。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CH4 電與磁的統一</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        h1 {
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        ul, ol {
+            margin-left: 20px;
+        }
+        .highlight {
+            background-color: #e8f5e9;
+            padding: 10px;
+            border-left: 4px solid #4CAF50;
+            margin: 10px 0;
+        }
+        .question {
+            background-color: #fff3cd;
+            padding: 10px;
+            border-left: 4px solid #ffc107;
+            margin: 10px 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        textarea {
+            width: 100%;
+            height: 50px;
+            margin: 10px 0;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            resize: vertical;
+            padding: 5px;
+        }
+        #feedback {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+        code {
+            background-color: #e8f5e9;
+            padding: 2px 4px;
+            font-size: 90%;
+        }
+        .strategy {
+            display: none;
+            background-color: #e0f7fa;
+            padding: 10px;
+            border-left: 4px solid #00acc1;
+            margin-top: 10px;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            padding: 10px 0;
+            background-color: #f0f0f0;
+            border-top: 1px solid #ddd;
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 15px;
+            background: linear-gradient(45deg, #4caf50, #81c784);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: transform 0.3s, background-color 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-btn span {
+            font-size: 16px;
+            margin-right: 5px;
+        }
+
+        .nav-btn:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>4-3 電與磁的統整</h1>
+
+        <!-- 4.3.1 馬克士威的電磁理論 -->
+        <h2>4.3.1 馬克士威的電磁理論</h2>
+        <p>19 世紀中期，蘇格蘭科學家<strong>馬克士威（James Clerk Maxwell）</strong>將電學和磁學的現象統整起來，提出了著名的<strong>馬克士威方程組</strong>。他成功地統一了電場和磁場的理論，預測了<strong>電磁波</strong>的存在，為電磁學奠定了理論基礎。</p>
+
+        <p>馬克士威的理論指出：</p>
+        <ul>
+            <li>變化的電場會產生磁場。</li>
+            <li>變化的磁場會產生電場。</li>
+            <li>電場和磁場是相互交織、不可分割的。</li>
+        </ul>
+
+        <p>這些觀念徹底改變了人們對電和磁的理解，開啟了電磁學的新時代。</p>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 1：</strong>  
+            馬克士威在電磁學中的主要貢獻是什麼？  
+            <textarea id="q1"></textarea>
+            <button class="btn" onclick="checkQ1()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s1')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f1', '他統一了電學和磁學，提出馬克士威方程組，預測了電磁波的存在')">顯示答案</button>
+            <div id="s1" class="strategy">
+                <strong>解題策略：</strong>
+                回憶馬克士威的主要理論和對電磁學的影響。
+            </div>
+            <p id="f1"></p>
+        </div>
+
+        <div class="question">
+            <strong>問題 2：</strong>  
+            馬克士威理論中，變化的電場和磁場之間有何關係？  
+            <textarea id="q2"></textarea>
+            <button class="btn" onclick="checkQ2()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s2')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f2', '變化的電場會產生磁場，變化的磁場會產生電場')">顯示答案</button>
+            <div id="s2" class="strategy">
+                <strong>解題策略：</strong>
+                思考電場和磁場如何相互影響。
+            </div>
+            <p id="f2"></p>
+        </div>
+
+        <!-- 4.3.2 電磁波 -->
+        <h2>4.3.2 電磁波</h2>
+        <p><strong>電磁波</strong>是由變化的電場和磁場相互作用而產生的波動，能夠在空間中傳播，不需要任何介質。馬克士威預測了電磁波的存在，並指出光也是一種電磁波。</p>
+
+        <h3>電磁波的產生</h3>
+        <p>電磁波的產生需要<strong>帶電粒子的加速度運動</strong>，例如：</p>
+        <ul>
+            <li>振盪電路中的電子運動。</li>
+            <li>天線中電子的來回振動。</li>
+        </ul>
+
+        <h3>電磁波的特性</h3>
+        <ul>
+            <li><strong>不需要介質：</strong>電磁波可以在真空中傳播。</li>
+            <li><strong>速度：</strong>在真空中的傳播速度為光速，約為 3 × 10<sup>8</sup> m/s。</li>
+            <li><strong>橫波性質：</strong>電場和磁場互相垂直，且都垂直於傳播方向。</li>
+        </ul>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 3：</strong>  
+            電磁波是如何產生的？  
+            <textarea id="q3"></textarea>
+            <button class="btn" onclick="checkQ3()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s3')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f3', '由帶電粒子的加速度運動產生變化的電場和磁場，相互作用形成電磁波')">顯示答案</button>
+            <div id="s3" class="strategy">
+                <strong>解題策略：</strong>
+                考慮帶電粒子運動時，電場和磁場如何變化。
+            </div>
+            <p id="f3"></p>
+        </div>
+
+        <div class="question">
+            <strong>問題 4：</strong>  
+            電磁波在真空中的傳播速度是多少？  
+            <textarea id="q4"></textarea>
+            <button class="btn" onclick="checkQ4()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s4')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f4', '約為 3 × 10^8 m/s，即光速')">顯示答案</button>
+            <div id="s4" class="strategy">
+                <strong>解題策略：</strong>
+                回憶電磁波和光速之間的關係。
+            </div>
+            <p id="f4"></p>
+        </div>
+
+        <div class="question">
+            <strong>問題 5：</strong>  
+            電磁波傳播時，電場和磁場的方向有何特性？  
+            <textarea id="q5"></textarea>
+            <button class="btn" onclick="checkQ5()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s5')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f5', '電場和磁場互相垂直，且都垂直於傳播方向，是橫波')">顯示答案</button>
+            <div id="s5" class="strategy">
+                <strong>解題策略：</strong>
+                思考電磁波的結構和波動特性。
+            </div>
+            <p id="f5"></p>
+        </div>
+
+        <!-- 4.3.3 生活中常見的電磁波 -->
+        <h2>4.3.3 生活中常見的電磁波</h2>
+        <p>電磁波廣泛存在於我們的日常生活中，不同頻率的電磁波具有不同的性質和應用。以下是常見的電磁波種類：</p>
+
+        <ul>
+            <li><strong>無線電波：</strong>用於廣播、通訊、無線網路。</li>
+            <li><strong>微波：</strong>用於微波爐、衛星通訊、雷達。</li>
+            <li><strong>紅外線：</strong>用於紅外線遙控器、熱成像、夜視設備。</li>
+            <li><strong>可見光：</strong>人眼可見的電磁波，用於照明、攝影。</li>
+            <li><strong>紫外線：</strong>太陽輻射的一部分，可用於消毒殺菌。</li>
+            <li><strong>X 射線：</strong>用於醫學成像、安檢。</li>
+            <li><strong>伽馬射線：</strong>核反應中產生，用於醫學治療、科學研究。</li>
+        </ul>
+
+        <div class="highlight">
+            <strong>電磁波譜：</strong>根據頻率或波長的不同，電磁波可以排列成一個連續的光譜，稱為電磁波譜。
+        </div>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 6：</strong>  
+            列舉三種日常生活中常見的電磁波及其應用。  
+            <textarea id="q6"></textarea>
+            <button class="btn" onclick="checkQ6()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s6')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f6', '如：無線電波-廣播；紅外線-遙控器；可見光-照明')">顯示答案</button>
+            <div id="s6" class="strategy">
+                <strong>解題策略：</strong>
+                回憶各種電磁波的應用場景。
+            </div>
+            <p id="f6"></p>
+        </div>
+
+        <div class="question">
+            <strong>問題 7：</strong>  
+            為什麼電磁波可以不需要介質就能傳播？  
+            <textarea id="q7"></textarea>
+            <button class="btn" onclick="checkQ7()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s7')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f7', '因為電磁波是電場和磁場的交互作用，不需要物質介質')">顯示答案</button>
+            <div id="s7" class="strategy">
+                <strong>解題策略：</strong>
+                思考電磁波的本質和傳播機制。
+            </div>
+            <p id="f7"></p>
+        </div>
+
+        <div class="question">
+            <strong>問題 8：</strong>  
+            可見光和 X 射線都是電磁波，為什麼它們的應用和特性差異這麼大？  
+            <textarea id="q8"></textarea>
+            <button class="btn" onclick="checkQ8()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s8')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f8', '因為它們的頻率和能量不同，導致穿透力和與物質的相互作用不同')">顯示答案</button>
+            <div id="s8" class="strategy">
+                <strong>解題策略：</strong>
+                考慮電磁波的頻率與能量之間的關係。
+            </div>
+            <p id="f8"></p>
+        </div>
+
+        <div class="navigation-buttons">
+            <a href="Lesson2.html" class="nav-btn">
+                <span>&uarr;</span> 上一單元:4-2 電磁感應
+            </a>
+            <a href="Lesson4.html" class="nav-btn">
+                <span>&darr;</span> 下一單元:4-4 波的現象
+            </a>
+        </div>    
+    </div>
+
+    <script>
+        // 切換解題策略顯示/隱藏
+        function toggleStrategy(id) {
+            const strategyDiv = document.getElementById(id);
+            if (strategyDiv.style.display === "none" || strategyDiv.style.display === "") {
+                strategyDiv.style.display = "block";
+            } else {
+                strategyDiv.style.display = "none";
+            }
+        }
+
+        // 通用函數 - 顯示答案
+        function toggleAnswer(id, correctAnswer) {
+            const feedback = document.getElementById(id);
+            if (feedback.style.display === "none" || feedback.style.display === "") {
+                feedback.textContent = "正確答案是：" + correctAnswer + "。";
+                feedback.className = "";
+                feedback.style.display = "block";
+            } else {
+                feedback.style.display = "none";
+            }
+        }
+
+        // 問題 1
+        function checkQ1() {
+            const answer = document.getElementById("q1").value.trim();
+            const feedback = document.getElementById("f1");
+            if ((answer.includes("馬克士威") || answer.includes("Maxwell")) && (answer.includes("統一") || answer.includes("方程組") || answer.includes("電磁波"))) {
+                feedback.textContent = "正確！他統一了電學和磁學，提出馬克士威方程組，預測了電磁波的存在。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請提及他的主要貢獻。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 2
+        function checkQ2() {
+            const answer = document.getElementById("q2").value.trim();
+            const feedback = document.getElementById("f2");
+            if ((answer.includes("變化的電場產生磁場") || answer.includes("變化的磁場產生電場")) && (answer.includes("相互作用") || answer.includes("互相關聯"))) {
+                feedback.textContent = "正確！變化的電場會產生磁場，變化的磁場會產生電場。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請描述電場和磁場之間的關係。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 3
+        function checkQ3() {
+            const answer = document.getElementById("q3").value.trim();
+            const feedback = document.getElementById("f3");
+            if ((answer.includes("帶電粒子") || answer.includes("電子")) && (answer.includes("加速度運動") || answer.includes("加速運動")) && (answer.includes("變化的電場和磁場") || answer.includes("電場和磁場變化"))) {
+                feedback.textContent = "正確！由帶電粒子的加速度運動產生變化的電場和磁場，相互作用形成電磁波。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請解釋電磁波的產生機制。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 4
+        function checkQ4() {
+            const answer = document.getElementById("q4").value.trim();
+            const feedback = document.getElementById("f4");
+            if ((answer.includes("3 × 10^8 m/s") || answer.includes("光速") || answer.includes("300,000 km/s"))) {
+                feedback.textContent = "正確！電磁波在真空中的傳播速度約為 3 × 10^8 m/s，即光速。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不正確，請再檢查數值。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 5
+        function checkQ5() {
+            const answer = document.getElementById("q5").value.trim();
+            const feedback = document.getElementById("f5");
+            if ((answer.includes("互相垂直") || answer.includes("正交")) && (answer.includes("垂直於傳播方向") || answer.includes("橫波"))) {
+                feedback.textContent = "正確！電場和磁場互相垂直，且都垂直於傳播方向，是橫波。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請描述電場和磁場的相對方向。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 6
+        function checkQ6() {
+            const answer = document.getElementById("q6").value.trim();
+            const feedback = document.getElementById("f6");
+            if (answer.match(/(無線電波|微波|紅外線|可見光|紫外線|X 射線|伽馬射線).*(應用)/)) {
+                feedback.textContent = "正確！如：無線電波-廣播；紅外線-遙控器；可見光-照明。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請列舉三種電磁波及其應用。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 7
+        function checkQ7() {
+            const answer = document.getElementById("q7").value.trim();
+            const feedback = document.getElementById("f7");
+            if ((answer.includes("不需要介質") || answer.includes("電場和磁場的交互作用")) && (answer.includes("自我傳播") || answer.includes("依靠自身的變化"))) {
+                feedback.textContent = "正確！因為電磁波是電場和磁場的交互作用，不需要物質介質。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請解釋電磁波不需要介質的原因。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 8
+        function checkQ8() {
+            const answer = document.getElementById("q8").value.trim();
+            const feedback = document.getElementById("f8");
+            if ((answer.includes("頻率") || answer.includes("能量")) && (answer.includes("不同") || answer.includes("差異")) && (answer.includes("穿透力") || answer.includes("相互作用"))) {
+                feedback.textContent = "正確！因為它們的頻率和能量不同，導致穿透力和與物質的相互作用不同。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請解釋頻率和能量對特性的影響。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+    </script>
+</body>
+</html>

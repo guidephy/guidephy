@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CH4 電與磁的統一</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        h1 {
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        ul, ol {
+            margin-left: 20px;
+        }
+        .highlight {
+            background-color: #e8f5e9;
+            padding: 10px;
+            border-left: 4px solid #4CAF50;
+            margin: 10px 0;
+        }
+        .question {
+            background-color: #fff3cd;
+            padding: 10px;
+            border-left: 4px solid #ffc107;
+            margin: 10px 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        textarea {
+            width: 100%;
+            height: 50px;
+            margin: 10px 0;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            resize: vertical;
+            padding: 5px;
+        }
+        #feedback {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+        code {
+            background-color: #e8f5e9;
+            padding: 2px 4px;
+            font-size: 90%;
+        }
+        .strategy {
+            display: none;
+            background-color: #e0f7fa;
+            padding: 10px;
+            border-left: 4px solid #00acc1;
+            margin-top: 10px;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            padding: 10px 0;
+            background-color: #f0f0f0;
+            border-top: 1px solid #ddd;
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 15px;
+            background: linear-gradient(45deg, #4caf50, #81c784);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: transform 0.3s, background-color 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-btn span {
+            font-size: 16px;
+            margin-right: 5px;
+        }
+
+        .nav-btn:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>4-4 波的現象</h1>
+
+        <!-- 4.4.1 什麼是波 -->
+        <h2>4.4.1 什麼是波</h2>
+        <p>波是一種能量傳遞的方式，透過振動在空間中傳播，但不會伴隨著物質的整體移動。</p>
+        <p>波的傳播可以將能量從一個地方傳遞到另一個地方，而介質的質點只是做短距離的振動。</p>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 1：</strong>
+            波是如何傳遞能量的？波的傳播是否伴隨物質的整體移動？
+            <textarea id="q1"></textarea>
+            <button class="btn" onclick="checkQ1()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s1')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f1', '波透過振動傳遞能量，不伴隨物質的整體移動')">顯示答案</button>
+            <div id="s1" class="strategy">
+                <strong>解題策略：</strong>
+                思考波的定義和能量傳遞方式。
+            </div>
+            <p id="f1"></p>
+        </div>
+
+        <!-- 4.4.2 波的種類 -->
+        <h2>4.4.2 波的種類</h2>
+        <p>根據波的性質和傳播方式，波可以分為以下幾種類型：</p>
+
+        <h3>1. 機械波</h3>
+        <p>需要介質才能傳播的波，例如聲波、水波、地震波。</p>
+
+        <h3>2. 電磁波</h3>
+        <p>不需要介質即可傳播的波，例如光、無線電波、X 射線。</p>
+
+        <h3>3. 橫波</h3>
+        <p>質點振動方向與波的傳播方向垂直的波，例如電磁波、水波的表面波。</p>
+
+        <h3>4. 縱波</h3>
+        <p>質點振動方向與波的傳播方向相同的波，例如聲波、彈簧的縱向振動。</p>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 2：</strong>
+            機械波與電磁波的主要區別是什麼？請舉一個例子。
+            <textarea id="q2"></textarea>
+            <button class="btn" onclick="checkQ2()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s2')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f2', '機械波需要介質傳播，如聲波；電磁波不需要介質，如光')">顯示答案</button>
+            <div id="s2" class="strategy">
+                <strong>解題策略：</strong>
+                思考波傳播是否需要介質，以及各自的例子。
+            </div>
+            <p id="f2"></p>
+        </div>
+
+        <div class="question">
+            <strong>問題 3：</strong>
+            橫波和縱波的質點振動方向與波的傳播方向有何關係？
+            <textarea id="q3"></textarea>
+            <button class="btn" onclick="checkQ3()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s3')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f3', '橫波的質點振動方向與波的傳播方向垂直；縱波則相同')">顯示答案</button>
+            <div id="s3" class="strategy">
+                <strong>解題策略：</strong>
+                回憶橫波和縱波的定義。
+            </div>
+            <p id="f3"></p>
+        </div>
+
+        <!-- 4.4.3 週期波 -->
+        <h2>4.4.3 週期波</h2>
+        <p>週期波是指質點以週期性方式振動，並產生具有規律性的波形。週期波的特徵參數包括：</p>
+
+        <h3>1. 波峰（Crest）</h3>
+        <p>波形中質點位移達到最大正值的位置。</p>
+
+        <h3>2. 波谷（Trough）</h3>
+        <p>波形中質點位移達到最大負值的位置。</p>
+
+        <h3>3. 振幅（Amplitude, A）</h3>
+        <p>質點偏離平衡位置的最大位移，表示波的能量大小。</p>
+
+        <h3>4. 波長（Wavelength, λ）</h3>
+        <p>相鄰兩個波峰或波谷之間的距離，表示波的空間週期性。</p>
+
+        <h3>5. 週期（Period, T）</h3>
+        <p>質點完成一次完整振動所需的時間，表示波的時間週期性。</p>
+
+        <h3>6. 頻率（Frequency, f）</h3>
+        <p>單位時間內質點完成振動的次數，f = 1/T，單位為赫茲（Hz）。</p>
+
+        <h3>7. 波速（Wave Speed, v）</h3>
+        <p>波在介質中傳播的速度，v = λ × f。</p>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 4：</strong>
+            振幅代表了什麼物理意義？它與波的能量有何關係？
+            <textarea id="q4"></textarea>
+            <button class="btn" onclick="checkQ4()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s4')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f4', '振幅是質點偏離平衡位置的最大位移，振幅越大，波的能量越大')">顯示答案</button>
+            <div id="s4" class="strategy">
+                <strong>解題策略：</strong>
+                思考振幅與能量之間的關係。
+            </div>
+            <p id="f4"></p>
+        </div>
+
+        <div class="question">
+            <strong>問題 5：</strong>
+            如果一個波的頻率是 10 Hz，波長是 2 m，求波速。
+            <textarea id="q5"></textarea>
+            <button class="btn" onclick="checkQ5()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s5')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f5', '波速 v = λ × f = 2 m × 10 Hz = 20 m/s')">顯示答案</button>
+            <div id="s5" class="strategy">
+                <strong>解題策略：</strong>
+                使用波速公式 v = λ × f 計算。
+            </div>
+            <p id="f5"></p>
+        </div>
+
+        <div class="question">
+            <strong>問題 6：</strong>
+            波長和頻率之間有何關係？如果波速不變，當頻率增加時，波長會如何變化？
+            <textarea id="q6"></textarea>
+            <button class="btn" onclick="checkQ6()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s6')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f6', '波速 v = λ × f，波速不變時，頻率增加，波長減小')">顯示答案</button>
+            <div id="s6" class="strategy">
+                <strong>解題策略：</strong>
+                重新整理波速公式，理解變量之間的反比關係。
+            </div>
+            <p id="f6"></p>
+        </div>
+
+        <div class="navigation-buttons">
+            <a href="Lesson3.html" class="nav-btn">
+                <span>&uarr;</span> 上一單元:4-3 電與磁的統整
+            </a>
+            <a href="Lesson5.html" class="nav-btn">
+                <span>&darr;</span> 下一單元:4-5 光波的特性
+            </a>
+        </div>    
+    </div>
+
+    <script>
+        // 切換解題策略顯示/隱藏
+        function toggleStrategy(id) {
+            const strategyDiv = document.getElementById(id);
+            if (strategyDiv.style.display === "none" || strategyDiv.style.display === "") {
+                strategyDiv.style.display = "block";
+            } else {
+                strategyDiv.style.display = "none";
+            }
+        }
+
+        // 通用函數 - 顯示答案
+        function toggleAnswer(id, correctAnswer) {
+            const feedback = document.getElementById(id);
+            if (feedback.style.display === "none" || feedback.style.display === "") {
+                feedback.textContent = "正確答案是：" + correctAnswer + "。";
+                feedback.className = "";
+                feedback.style.display = "block";
+            } else {
+                feedback.style.display = "none";
+            }
+        }
+
+        // 問題 1
+        function checkQ1() {
+            const answer = document.getElementById("q1").value.trim();
+            const feedback = document.getElementById("f1");
+            if ((answer.includes("振動") || answer.includes("波動")) && (answer.includes("傳遞能量")) && (answer.includes("不伴隨") || answer.includes("不會") || answer.includes("沒有")) && (answer.includes("物質") || answer.includes("質點")) && (answer.includes("整體移動") || answer.includes("運動"))) {
+                feedback.textContent = "正確！波透過振動傳遞能量，不伴隨物質的整體移動。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請說明波如何傳遞能量，以及是否伴隨物質移動。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 2
+        function checkQ2() {
+            const answer = document.getElementById("q2").value.trim();
+            const feedback = document.getElementById("f2");
+            if ((answer.includes("機械波") && answer.includes("需要介質") && answer.includes("例") && (answer.includes("聲波") || answer.includes("水波") || answer.includes("地震波"))) && (answer.includes("電磁波") && answer.includes("不需要介質") && answer.includes("例") && (answer.includes("光") || answer.includes("無線電波") || answer.includes("X 射線")))) {
+                feedback.textContent = "正確！機械波需要介質傳播，如聲波；電磁波不需要介質，如光。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請指出主要區別並舉例。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 3
+        function checkQ3() {
+            const answer = document.getElementById("q3").value.trim();
+            const feedback = document.getElementById("f3");
+            if ((answer.includes("橫波") && answer.includes("垂直")) && (answer.includes("縱波") && (answer.includes("相同") || answer.includes("平行")))) {
+                feedback.textContent = "正確！橫波的質點振動方向與波的傳播方向垂直；縱波則相同。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請說明兩種波的振動方向關係。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 4
+        function checkQ4() {
+            const answer = document.getElementById("q4").value.trim();
+            const feedback = document.getElementById("f4");
+            if ((answer.includes("最大位移") || answer.includes("偏離平衡位置的最大值")) && (answer.includes("能量") && (answer.includes("越大") || answer.includes("正比")))) {
+                feedback.textContent = "正確！振幅是質點偏離平衡位置的最大位移，振幅越大，波的能量越大。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請解釋振幅的物理意義和與能量的關係。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 5
+        function checkQ5() {
+            const answer = document.getElementById("q5").value.trim();
+            const feedback = document.getElementById("f5");
+            if ((answer.includes("波速") || answer.includes("v")) && (answer.includes("20 m/s") || answer.includes("20公尺每秒"))) {
+                feedback.textContent = "正確！波速 v = λ × f = 2 m × 10 Hz = 20 m/s。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "計算不正確，請重新計算波速。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 6
+        function checkQ6() {
+            const answer = document.getElementById("q6").value.trim();
+            const feedback = document.getElementById("f6");
+            if ((answer.includes("波速不變") || answer.includes("v 不變")) && (answer.includes("頻率增加") || answer.includes("f 增加")) && (answer.includes("波長減小") || answer.includes("λ 減小")) && (answer.includes("反比關係") || answer.includes("成反比"))) {
+                feedback.textContent = "正確！波速 v = λ × f，波速不變時，頻率增加，波長減小。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請解釋波長和頻率的關係。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+    </script>
+</body>
+</html>

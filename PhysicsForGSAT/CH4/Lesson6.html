@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CH4 電與磁的統一</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        h1 {
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        ul, ol {
+            margin-left: 20px;
+        }
+        .highlight {
+            background-color: #e8f5e9;
+            padding: 10px;
+            border-left: 4px solid #4CAF50;
+            margin: 10px 0;
+        }
+        .question {
+            background-color: #fff3cd;
+            padding: 10px;
+            border-left: 4px solid #ffc107;
+            margin: 10px 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        textarea {
+            width: 100%;
+            height: 50px;
+            margin: 10px 0;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            resize: vertical;
+            padding: 5px;
+        }
+        #feedback {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+        code {
+            background-color: #e8f5e9;
+            padding: 2px 4px;
+            font-size: 90%;
+        }
+        .strategy {
+            display: none;
+            background-color: #e0f7fa;
+            padding: 10px;
+            border-left: 4px solid #00acc1;
+            margin-top: 10px;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            padding: 10px 0;
+            background-color: #f0f0f0;
+            border-top: 1px solid #ddd;
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 15px;
+            background: linear-gradient(45deg, #4caf50, #81c784);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: transform 0.3s, background-color 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-btn span {
+            font-size: 16px;
+            margin-right: 5px;
+        }
+
+        .nav-btn:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>4-6 都卜勒效應</h1>
+
+        <!-- 4.6.1 都卜勒效應 -->
+        <h2>4.6.1 都卜勒效應</h2>
+        <p><strong>都卜勒效應</strong>是指當波源和觀察者之間存在相對運動時，觀察者接收到的波頻率會與波源發出的頻率不同的現象。</p>
+
+        <p>具體而言：</p>
+        <ul>
+            <li>當觀察者和波源互相接近時，觀察者接收到的頻率較高。</li>
+            <li>當觀察者和波源互相遠離時，觀察者接收到的頻率較低。</li>
+        </ul>
+
+        <p>都卜勒效應適用於所有波動，包括聲波、光波和電磁波。</p>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 1：</strong>
+            簡述都卜勒效應的概念。當觀察者與波源互相接近時，觀察者接收到的頻率如何變化？
+            <textarea id="q1"></textarea>
+            <button class="btn" onclick="checkQ1()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s1')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f1', '都卜勒效應是波源和觀察者有相對運動時，接收到的頻率不同；互相接近時，頻率增加')">顯示答案</button>
+            <div id="s1" class="strategy">
+                <strong>解題策略：</strong>
+                回憶都卜勒效應的定義，並思考相對運動對頻率的影響。
+            </div>
+            <p id="f1"></p>
+        </div>
+
+        <div class="question">
+            <strong>問題 2：</strong>
+            都卜勒效應是否只適用於聲波？請解釋。
+            <textarea id="q2"></textarea>
+            <button class="btn" onclick="checkQ2()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s2')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f2', '不僅適用於聲波，也適用於所有波動，包括光波')">顯示答案</button>
+            <div id="s2" class="strategy">
+                <strong>解題策略：</strong>
+                考慮都卜勒效應的普適性，是否受限於某種波。
+            </div>
+            <p id="f2"></p>
+        </div>
+
+        <!-- 4.6.2 都卜勒效應的應用 -->
+        <h2>4.6.2 都卜勒效應的應用</h2>
+        <p>都卜勒效應在各個領域有廣泛的應用，包括醫學、生物學和天文學等。</p>
+
+        <h3>1. 醫學上的都卜勒超音波</h3>
+        <p>利用都卜勒效應測量體內血液流速，診斷血管阻塞、心臟病等問題。</p>
+
+        <h3>2. 生物的聲波定位</h3>
+        <p>蝙蝠和海豚利用聲波的都卜勒效應，透過發出聲波並接收反射回來的波，判斷物體的距離和移動方向。</p>
+
+        <h3>3. 天文學上的紅移現象</h3>
+        <p>星體發出的光因為遠離地球，光波波長變長，出現紅移。這是利用光的都卜勒效應解釋的，支持了宇宙膨脹的理論。</p>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 3：</strong>
+            都卜勒超音波在醫學上是如何應用的？可以診斷哪些問題？
+            <textarea id="q3"></textarea>
+            <button class="btn" onclick="checkQ3()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s3')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f3', '利用都卜勒效應測量血液流速，可診斷血管阻塞、心臟病等')">顯示答案</button>
+            <div id="s3" class="strategy">
+                <strong>解題策略：</strong>
+                思考都卜勒效應如何影響頻率，進而測量流動速度。
+            </div>
+            <p id="f3"></p>
+        </div>
+
+        <div class="question">
+            <strong>問題 4：</strong>
+            蝙蝠如何利用都卜勒效應來偵測周遭物體？
+            <textarea id="q4"></textarea>
+            <button class="btn" onclick="checkQ4()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s4')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f4', '發出聲波，接收反射波的頻率變化，判斷物體距離和移動')">顯示答案</button>
+            <div id="s4" class="strategy">
+                <strong>解題策略：</strong>
+                考慮聲波的發射和接收，以及頻率變化的信息。
+            </div>
+            <p id="f4"></p>
+        </div>
+
+        <div class="question">
+            <strong>問題 5：</strong>
+            天文學中的紅移現象是什麼？它證明了什麼宇宙學理論？
+            <textarea id="q5"></textarea>
+            <button class="btn" onclick="checkQ5()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s5')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f5', '星體光波波長變長，表明星體遠離地球；證明了宇宙在膨脹')">顯示答案</button>
+            <div id="s5" class="strategy">
+                <strong>解題策略：</strong>
+                回憶紅移的定義，思考其在宇宙學中的意義。
+            </div>
+            <p id="f5"></p>
+        </div>
+
+        <div class="navigation-buttons">
+            <a href="Lesson5.html" class="nav-btn">
+                <span>&uarr;</span> 上一單元:4-5 光波的特性
+            </a>
+            <a href="https://guidephy.github.io/guidephy/PhysicsForGSAT/CH5/Lesson1.html" class="nav-btn">
+                <span>&rarr;</span> 第五章:能量
+            </a>
+        </div>    
+    </div>
+
+    <script>
+        // 切換解題策略顯示/隱藏
+        function toggleStrategy(id) {
+            const strategyDiv = document.getElementById(id);
+            if (strategyDiv.style.display === "none" || strategyDiv.style.display === "") {
+                strategyDiv.style.display = "block";
+            } else {
+                strategyDiv.style.display = "none";
+            }
+        }
+
+        // 通用函數 - 顯示答案
+        function toggleAnswer(id, correctAnswer) {
+            const feedback = document.getElementById(id);
+            if (feedback.style.display === "none" || feedback.style.display === "") {
+                feedback.textContent = "正確答案是：" + correctAnswer + "。";
+                feedback.className = "";
+                feedback.style.display = "block";
+            } else {
+                feedback.style.display = "none";
+            }
+        }
+
+        // 問題 1
+        function checkQ1() {
+            const answer = document.getElementById("q1").value.trim();
+            const feedback = document.getElementById("f1");
+            if ((answer.includes("相對運動") || answer.includes("接近") || answer.includes("遠離")) && (answer.includes("頻率不同") || answer.includes("頻率改變")) && (answer.includes("接近時") && (answer.includes("頻率增加") || answer.includes("頻率較高")))) {
+                feedback.textContent = "正確！都卜勒效應是波源和觀察者有相對運動時，接收到的頻率不同；互相接近時，頻率增加。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請說明都卜勒效應的概念和頻率變化。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 2
+        function checkQ2() {
+            const answer = document.getElementById("q2").value.trim();
+            const feedback = document.getElementById("f2");
+            if ((answer.includes("不") || answer.includes("不僅")) && (answer.includes("聲波") || answer.includes("適用於所有波")) && (answer.includes("光波") || answer.includes("電磁波"))) {
+                feedback.textContent = "正確！不僅適用於聲波，也適用於所有波動，包括光波。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請解釋都卜勒效應是否只適用於聲波。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 3
+        function checkQ3() {
+            const answer = document.getElementById("q3").value.trim();
+            const feedback = document.getElementById("f3");
+            if ((answer.includes("測量血液流速") || answer.includes("都卜勒超音波")) && (answer.includes("診斷") || answer.includes("血管") || answer.includes("心臟病"))) {
+                feedback.textContent = "正確！利用都卜勒效應測量血液流速，可診斷血管阻塞、心臟病等。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請描述都卜勒超音波的應用和診斷的問題。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 4
+        function checkQ4() {
+            const answer = document.getElementById("q4").value.trim();
+            const feedback = document.getElementById("f4");
+            if ((answer.includes("發出聲波") || answer.includes("接收反射波")) && (answer.includes("頻率變化") || answer.includes("判斷距離") || answer.includes("移動方向"))) {
+                feedback.textContent = "正確！發出聲波，接收反射波的頻率變化，判斷物體距離和移動。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請解釋蝙蝠如何利用都卜勒效應。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 5
+        function checkQ5() {
+            const answer = document.getElementById("q5").value.trim();
+            const feedback = document.getElementById("f5");
+            if ((answer.includes("紅移") || answer.includes("波長變長")) && (answer.includes("遠離地球") || answer.includes("宇宙膨脹"))) {
+                feedback.textContent = "正確！星體光波波長變長，表明星體遠離地球；證明了宇宙在膨脹。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請描述紅移現象和其證明的理論。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+    </script>
+</body>
+</html>

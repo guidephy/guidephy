@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CH4 電與磁的統一</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        h1 {
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        ul, ol {
+            margin-left: 20px;
+        }
+        .highlight {
+            background-color: #e8f5e9;
+            padding: 10px;
+            border-left: 4px solid #4CAF50;
+            margin: 10px 0;
+        }
+        .question {
+            background-color: #fff3cd;
+            padding: 10px;
+            border-left: 4px solid #ffc107;
+            margin: 10px 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        textarea {
+            width: 100%;
+            height: 50px;
+            margin: 10px 0;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            resize: vertical;
+            padding: 5px;
+        }
+        #feedback {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+        code {
+            background-color: #e8f5e9;
+            padding: 2px 4px;
+            font-size: 90%;
+        }
+        .strategy {
+            display: none;
+            background-color: #e0f7fa;
+            padding: 10px;
+            border-left: 4px solid #00acc1;
+            margin-top: 10px;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            padding: 10px 0;
+            background-color: #f0f0f0;
+            border-top: 1px solid #ddd;
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 15px;
+            background: linear-gradient(45deg, #4caf50, #81c784);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: transform 0.3s, background-color 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-btn span {
+            font-size: 16px;
+            margin-right: 5px;
+        }
+
+        .nav-btn:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>4-2 電磁感應</h1>
+
+        <!-- 4.2.1 電磁感應的發現 -->
+        <h2>4.2.1 電磁感應的發現</h2>
+        <p>1831 年，英國科學家<strong>法拉第（Michael Faraday）</strong>發現，當磁場通過閉合線圈的磁力線數量發生變化時，線圈中會產生電流，這種現象稱為<strong>電磁感應</strong>。</p>
+
+        <p>這一發現表明了磁場可以產生電流，進一步揭示了電與磁之間的深層聯繫。</p>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 1：</strong>  
+            誰發現了電磁感應現象？電磁感應的基本原理是什麼？  
+            <textarea id="q1"></textarea>
+            <button class="btn" onclick="checkQ1()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s1')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f1', '法拉第發現了電磁感應；磁場變化會在閉合線圈中產生電流')">顯示答案</button>
+            <div id="s1" class="strategy">
+                <strong>解題策略：</strong>
+                回憶法拉第的貢獻和電磁感應的基本概念。
+            </div>
+            <p id="f1"></p>
+        </div>
+
+        <!-- 4.2.2 法拉第電磁感應定律 -->
+        <h2>4.2.2 法拉第電磁感應定律</h2>
+        <p>法拉第深入研究了電磁感應現象，發現感應電流的大小與磁場變化的速度和程度有關。他總結出以下觀念：</p>
+        <ul>
+            <li><strong>磁場變化率越大，感應電流越強：</strong>快速改變磁場會產生較大的感應電流。</li>
+            <li><strong>線圈匝數越多，感應電流越強：</strong>更多的線圈匝數會加強感應效果。</li>
+            <li><strong>磁場變化方式：</strong>磁場可以通過移動磁鐵、改變電流、改變線圈面積或角度等方式變化。</li>
+        </ul>
+
+        <p>總結來說，感應電流的產生取決於磁場的變化以及線圈的特性。</p>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 2：</strong>  
+            感應電流的大小受哪些因素影響？請列舉至少兩個。  
+            <textarea id="q2"></textarea>
+            <button class="btn" onclick="checkQ2()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s2')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f2', '磁場變化率、線圈匝數、磁場強度、線圈面積')">顯示答案</button>
+            <div id="s2" class="strategy">
+                <strong>解題策略：</strong>
+                思考哪些因素會影響磁場的變化和線圈的感應能力。
+            </div>
+            <p id="f2"></p>
+        </div>
+
+        <div class="question">
+            <strong>問題 3：</strong>  
+            為什麼移動磁鐵進入線圈會產生感應電流？  
+            <textarea id="q3"></textarea>
+            <button class="btn" onclick="checkQ3()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s3')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f3', '因為磁場通過線圈的磁力線數量發生變化，產生感應電流')">顯示答案</button>
+            <div id="s3" class="strategy">
+                <strong>解題策略：</strong>
+                考慮磁鐵移動時，線圈內的磁通量如何變化。
+            </div>
+            <p id="f3"></p>
+        </div>
+
+        <div class="question">
+            <strong>問題 4：</strong>  
+            如果保持磁鐵和線圈相對靜止，是否會產生感應電流？為什麼？  
+            <textarea id="q4"></textarea>
+            <button class="btn" onclick="checkQ4()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s4')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f4', '不會，因為磁場沒有發生變化，沒有磁通量的變化')">顯示答案</button>
+            <div id="s4" class="strategy">
+                <strong>解題策略：</strong>
+                回憶感應電流產生的必要條件。
+            </div>
+            <p id="f4"></p>
+        </div>
+
+        <!-- 4.2.3 冷次定律 -->
+        <h2>4.2.3 冷次定律</h2>
+        <p><strong>冷次定律</strong>用於確定感應電流的方向。它表明，感應電流會產生一個磁場，該磁場的作用是抵抗引起感應電流的磁通量變化。</p>
+
+        <p>簡單來說，感應電流的方向總是試圖維持原有的磁場狀態。</p>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 5：</strong>  
+            冷次定律如何確定感應電流的方向？  
+            <textarea id="q5"></textarea>
+            <button class="btn" onclick="checkQ5()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s5')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f5', '感應電流產生的磁場會抵抗磁通量的變化')">顯示答案</button>
+            <div id="s5" class="strategy">
+                <strong>解題策略：</strong>
+                回憶冷次定律的內容，思考「抵抗變化」的含義。
+            </div>
+            <p id="f5"></p>
+        </div>
+
+        <div class="question">
+            <strong>問題 6：</strong>  
+            如果一個磁鐵的 N 極靠近線圈，根據冷次定律，線圈中的感應電流方向如何？  
+            <textarea id="q6"></textarea>
+            <button class="btn" onclick="checkQ6()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s6')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f6', '感應電流產生的磁場方向與靠近的 N 極相反，以抵抗磁通量增加')">顯示答案</button>
+            <div id="s6" class="strategy">
+                <strong>解題策略：</strong>
+                想像線圈產生的磁場如何抵抗外來磁場的變化。
+            </div>
+            <p id="f6"></p>
+        </div>
+
+        <!-- 4.2.4 電磁感應的應用 -->
+        <h2>4.2.4 電磁感應的應用</h2>
+        <p>電磁感應現象在現代科技中有廣泛的應用：</p>
+
+        <h3>1. 發電機</h3>
+        <p>發電機利用電磁感應原理，將機械能轉換為電能。當線圈在磁場中旋轉時，磁通量發生變化，產生感應電動勢，從而產生電流。</p>
+
+        <h3>2. 變壓器</h3>
+        <p>變壓器利用電磁感應在兩個線圈之間傳遞能量，可調節電壓的高低。主要用於電力傳輸和分配。</p>
+
+        <h3>3. 電磁爐</h3>
+        <p>電磁爐利用電磁感應在鍋具底部產生渦電流，電流的熱效應加熱食物，具有高效率和安全性。</p>
+
+        <h3>4. 無線充電器</h3>
+        <p>無線充電器通過電磁感應實現能量的非接觸式傳輸，為電子設備充電。</p>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 7：</strong>  
+            發電機是如何利用電磁感應原理產生電流的？  
+            <textarea id="q7"></textarea>
+            <button class="btn" onclick="checkQ7()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s7')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f7', '通過旋轉線圈改變磁通量，產生感應電動勢和電流')">顯示答案</button>
+            <div id="s7" class="strategy">
+                <strong>解題策略：</strong>
+                回憶發電機的結構和工作原理，特別是線圈和磁場的相對運動。
+            </div>
+            <p id="f7"></p>
+        </div>
+
+        <div class="question">
+            <strong>問題 8：</strong>  
+            為什麼電磁爐只能加熱金屬鍋具，而玻璃或陶瓷鍋具無法加熱？  
+            <textarea id="q8"></textarea>
+            <button class="btn" onclick="checkQ8()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s8')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f8', '因為金屬能導電，產生感應電流，玻璃和陶瓷不導電，無法產生感應電流')">顯示答案</button>
+            <div id="s8" class="strategy">
+                <strong>解題策略：</strong>
+                考慮電磁感應需要導體才能產生感應電流。
+            </div>
+            <p id="f8"></p>
+        </div>
+
+        <div class="question">
+            <strong>問題 9：</strong>  
+            無線充電器是如何利用電磁感應為設備充電的？  
+            <textarea id="q9"></textarea>
+            <button class="btn" onclick="checkQ9()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s9')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f9', '通過發射線圈產生變化的磁場，接收線圈感應出電流進行充電')">顯示答案</button>
+            <div id="s9" class="strategy">
+                <strong>解題策略：</strong>
+                思考無線充電器中發射端和接收端如何互動。
+            </div>
+            <p id="f9"></p>
+        </div>
+
+        <!-- 4.2.5 電流磁效應和電磁感應的比較 -->
+        <h2>4.2.5 電流磁效應和電磁感應的比較</h2>
+        <p>電流磁效應和電磁感應是電磁學中兩個重要的現象，它們之間有著密切的聯繫和區別：</p>
+        <ul>
+            <li><strong>電流磁效應：</strong>電流產生磁場，揭示了電產生磁的現象。</li>
+            <li><strong>電磁感應：</strong>磁場的變化產生電流，揭示了磁產生電的現象。</li>
+            <li><strong>相互關係：</strong>這兩個現象互為反向過程，組成了電磁相互作用的完整理論基礎。</li>
+        </ul>
+
+        <p>透過比較，我們可以更深入地理解電與磁之間的相互轉換和影響。</p>
+
+        <!-- 問題集 -->
+        <div class="question">
+            <strong>問題 10：</strong>  
+            電流磁效應和電磁感應的主要區別是什麼？  
+            <textarea id="q10"></textarea>
+            <button class="btn" onclick="checkQ10()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s10')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f10', '電流磁效應是電流產生磁場；電磁感應是磁場變化產生電流')">顯示答案</button>
+            <div id="s10" class="strategy">
+                <strong>解題策略：</strong>
+                回憶兩個現象的定義，思考它們的因果關係。
+            </div>
+            <p id="f10"></p>
+        </div>
+
+        <div class="question">
+            <strong>問題 11：</strong>  
+            為什麼說電流磁效應和電磁感應互為反向過程？  
+            <textarea id="q11"></textarea>
+            <button class="btn" onclick="checkQ11()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s11')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f11', '一個是電產生磁，另一個是磁產生電，兩者互為反向')">顯示答案</button>
+            <div id="s11" class="strategy">
+                <strong>解題策略：</strong>
+                考慮兩個現象的本質和相互轉換關係。
+            </div>
+            <p id="f11"></p>
+        </div>
+
+        <div class="question">
+            <strong>問題 12：</strong>  
+            試舉例說明電流磁效應和電磁感應在實際應用中的結合。  
+            <textarea id="q12"></textarea>
+            <button class="btn" onclick="checkQ12()">提交</button>
+            <button class="btn" onclick="toggleStrategy('s12')">解題策略</button>
+            <button class="btn" onclick="toggleAnswer('f12', '電動機和發電機，同時利用了電流磁效應和電磁感應')">顯示答案</button>
+            <div id="s12" class="strategy">
+                <strong>解題策略：</strong>
+                思考哪些裝置同時涉及電和磁的相互作用。
+            </div>
+            <p id="f12"></p>
+        </div>
+
+        <div class="navigation-buttons">
+            <a href="Lesson1.html" class="nav-btn">
+                <span>&uarr;</span> 上一單元:4-1 電流磁效應
+            </a>
+            <a href="Lesson3.html" class="nav-btn">
+                <span>&darr;</span> 下一單元:4-3 電與磁的統整
+            </a>
+        </div>    
+    </div>
+
+    <script>
+        // 切換解題策略顯示/隱藏
+        function toggleStrategy(id) {
+            const strategyDiv = document.getElementById(id);
+            if (strategyDiv.style.display === "none" || strategyDiv.style.display === "") {
+                strategyDiv.style.display = "block";
+            } else {
+                strategyDiv.style.display = "none";
+            }
+        }
+
+        // 通用函數 - 顯示答案
+        function toggleAnswer(id, correctAnswer) {
+            const feedback = document.getElementById(id);
+            if (feedback.style.display === "none" || feedback.style.display === "") {
+                feedback.textContent = "正確答案是：" + correctAnswer + "。";
+                feedback.className = "";
+                feedback.style.display = "block";
+            } else {
+                feedback.style.display = "none";
+            }
+        }
+
+        // 問題 1
+        function checkQ1() {
+            const answer = document.getElementById("q1").value.trim();
+            const feedback = document.getElementById("f1");
+            if ((answer.includes("法拉第") || answer.includes("Faraday")) && (answer.includes("磁場變化") || answer.includes("磁通量變化") || answer.includes("磁力線變化"))) {
+                feedback.textContent = "正確！法拉第發現了電磁感應；磁場變化會在閉合線圈中產生電流。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請提及發現者和基本原理。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 2
+        function checkQ2() {
+            const answer = document.getElementById("q2").value.trim();
+            const feedback = document.getElementById("f2");
+            if ((answer.includes("磁場變化率") || answer.includes("磁場變化速度") || answer.includes("變化快慢")) && (answer.includes("線圈匝數") || answer.includes("匝數")) || (answer.includes("磁場強度") || answer.includes("線圈面積"))) {
+                feedback.textContent = "正確！感應電流的大小受磁場變化率、線圈匝數、磁場強度、線圈面積等因素影響。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請列舉至少兩個影響因素。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 3
+        function checkQ3() {
+            const answer = document.getElementById("q3").value.trim();
+            const feedback = document.getElementById("f3");
+            if ((answer.includes("磁力線變化") || answer.includes("磁通量變化") || answer.includes("磁場變化")) && (answer.includes("產生感應電流") || answer.includes("感應電流"))) {
+                feedback.textContent = "正確！因為磁場通過線圈的磁力線數量發生變化，產生感應電流。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請解釋磁鐵移動如何導致感應電流。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 4
+        function checkQ4() {
+            const answer = document.getElementById("q4").value.trim();
+            const feedback = document.getElementById("f4");
+            if ((answer.includes("不會") || answer.includes("沒有感應電流")) && (answer.includes("磁場沒有變化") || answer.includes("磁通量不變") || answer.includes("磁力線數量不變"))) {
+                feedback.textContent = "正確！不會，因為磁場沒有發生變化，沒有磁通量的變化。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請解釋原因。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 5
+        function checkQ5() {
+            const answer = document.getElementById("q5").value.trim();
+            const feedback = document.getElementById("f5");
+            if (answer.includes("抵抗") && answer.includes("磁通量變化") && (answer.includes("感應電流") || answer.includes("產生的磁場"))) {
+                feedback.textContent = "正確！感應電流產生的磁場會抵抗磁通量的變化。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請描述冷次定律的內容。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 6
+        function checkQ6() {
+            const answer = document.getElementById("q6").value.trim();
+            const feedback = document.getElementById("f6");
+            if ((answer.includes("感應電流") || answer.includes("線圈")) && (answer.includes("產生磁場") || answer.includes("磁場方向")) && (answer.includes("抵抗") || answer.includes("相反"))) {
+                feedback.textContent = "正確！感應電流產生的磁場方向與靠近的 N 極相反，以抵抗磁通量增加。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請考慮冷次定律的應用。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 7
+        function checkQ7() {
+            const answer = document.getElementById("q7").value.trim();
+            const feedback = document.getElementById("f7");
+            if ((answer.includes("旋轉線圈") || answer.includes("磁通量變化")) && (answer.includes("感應電動勢") || answer.includes("產生電流"))) {
+                feedback.textContent = "正確！通過旋轉線圈改變磁通量，產生感應電動勢和電流。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請描述發電機的工作原理。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 8
+        function checkQ8() {
+            const answer = document.getElementById("q8").value.trim();
+            const feedback = document.getElementById("f8");
+            if ((answer.includes("金屬") || answer.includes("導體")) && (answer.includes("導電") || answer.includes("感應電流")) && (answer.includes("玻璃") || answer.includes("陶瓷")) && (answer.includes("不導電") || answer.includes("不能產生感應電流"))) {
+                feedback.textContent = "正確！因為金屬能導電，產生感應電流；玻璃和陶瓷不導電，無法產生感應電流。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請解釋電磁爐對不同材料的影響。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 9
+        function checkQ9() {
+            const answer = document.getElementById("q9").value.trim();
+            const feedback = document.getElementById("f9");
+            if ((answer.includes("發射線圈") || answer.includes("變化的磁場")) && (answer.includes("接收線圈") || answer.includes("感應電流")) && (answer.includes("充電"))) {
+                feedback.textContent = "正確！通過發射線圈產生變化的磁場，接收線圈感應出電流進行充電。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請描述無線充電的原理。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 10
+        function checkQ10() {
+            const answer = document.getElementById("q10").value.trim();
+            const feedback = document.getElementById("f10");
+            if ((answer.includes("電流產生磁場") || answer.includes("電產生磁")) && (answer.includes("磁場變化產生電流") || answer.includes("磁產生電"))) {
+                feedback.textContent = "正確！電流磁效應是電流產生磁場；電磁感應是磁場變化產生電流。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請明確區別。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 11
+        function checkQ11() {
+            const answer = document.getElementById("q11").value.trim();
+            const feedback = document.getElementById("f11");
+            if ((answer.includes("電產生磁") || answer.includes("電流磁效應")) && (answer.includes("磁產生電") || answer.includes("電磁感應")) && (answer.includes("互為反向") || answer.includes("相互轉換"))) {
+                feedback.textContent = "正確！一個是電產生磁，另一個是磁產生電，兩者互為反向。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請解釋兩者的反向關係。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        // 問題 12
+        function checkQ12() {
+            const answer = document.getElementById("q12").value.trim();
+            const feedback = document.getElementById("f12");
+            if ((answer.includes("電動機") || answer.includes("發電機")) && (answer.includes("電流磁效應") || answer.includes("電磁感應"))) {
+                feedback.textContent = "正確！電動機和發電機，同時利用了電流磁效應和電磁感應。";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "答案不完整，請舉例說明。";
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+    </script>
+</body>
+</html>
+
